@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- Stylesheets -->
+<div th:remove="tag" th:fragment="style">
+    <link rel="stylesheet" th:href="@{/assets/css/new-user-panel.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/assets/css/ol.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/dataTable.css}" type="text/css">
+<!--    <link type="text/css" rel="stylesheet" th:href="@{/assets/css/othersPage.css}">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="بهتاتهویه">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta name="keywords" content=",تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه,بهتاتهویه, فروشگاه اینترنتی بهتاتهویه
+    بهتاتهویه, فروشگاه اینترنتی بهتاتهویه, تهویه مطبوع, چیلر, کولر گازی, تجهیزات تهویه, درباره ما, خرید آنلاین تهویه مطبوع">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="بهتاتهویه -  فروشگاه اینترنتی بهتاتهویه ">
+    <meta property="og:description" content="بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta property="og:url" content="https://shop.behtatahvie.com/about">
+    <meta property="og:site_name" content="فروشگاه اینترنتی بهتاتهویه">
+    <meta property="og:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="بهتاتهویه -  فروشگاه اینترنتی بهتاتهویه ">
+    <meta name="twitter:description" content="بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta name="twitter:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="32x32">
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://shop.behtatahvie.com/assets/media/logos/logo-1.png">
+    <meta name="msapplication-TileImage" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://shop.behtatahvie.com/about">
+    <title>بهتاتهویه -  فروشگاه اینترنتی بهتاتهویه </title>
+</div>
+
+
+<div th:remove="tag" th:fragment="content">
+<input hidden th:value="${type}" class="nav_type">
+    <div class="content mb-0">
+        <h1 class="d-bugingg d-none">بهتاتهویه -  فروشگاه اینترنتی بهتاتهویه </h1>
+
+        <aside id="panel-sidebar" class="col-lg-3 col-md-6 col-sm-12 box-shadow" style="display: block">
+            <div class="user-box">
+                <div class="user-content">
+                    <figure><img th:src="@{/assets/images/23.svg}" alt=" بهتاتهویه"></figure>
+                    <div class="user-detail">
+                        <span class="costumer_name_last">[[${detail.firstName}]] [[ ${detail.lastName}]]</span>
+                        <span>[[${detail.mobile}]]</span>
+                    </div>
+                </div>
+                <div class="user-wallet">
+                    <div class="wallet-cash">
+                        <span>موجودی کیف پول:</span>
+                        <span>
+                          [[${#numbers.formatDecimal(walletCharge, 0, 'COMMA', 0, 'POINT')}]]
+                            تومان
+                        </span>
+                    </div>
+                    <a style="cursor: pointer !important" id="wallet-increase" class="nav_items chargeWallet_class" th:classappend="${type} == 8 ? 'menu-active': ''  "  data-nav-id="8" >
+                        <i class="icon icon-plus"></i>افزایش موجودی
+                    </a>
+                </div>
+            </div>
+            <div class="panel-menu">
+                <nav class="menu-content">
+                    <span class=" nav_items dashboard_class"  th:classappend="${type} == 0 ? 'menu-active': ''  "   data-nav-id="0">
+                        <figure><img th:src="@{/assets/images/24.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">داشبورد</a>
+                    </span>
+                    <span class="nav_items orders_class" th:classappend="${type} == 5 ? 'menu-active': ''  "  data-nav-id="5">
+                        <figure><img th:src="@{/assets/images/25.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">سفارش های من</a>
+                    </span>
+                    <span class="nav_items offCode_class" th:classappend="${type} == 3 ? 'menu-active': ''  "  data-nav-id="3">
+                        <figure><img th:src="@{/assets/images/26.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">تخفیف ها</a>
+                    </span>
+<!--                    <span class="nav_items userInfo_class" data-nav-id="6" >-->
+<!--                    <span class="nav_items interests_class"  data-nav-id="2">-->
+<!--                        <figure><img th:src="@{/assets/images/27.svg}" alt=" بهتاتهویه"></figure>-->
+<!--                        <a href="#">مورد علاقه ها</a>-->
+<!--                    </span>-->
+                    <span class="nav_items userInfo_class" th:classappend="${type} == 6 ? 'menu-active': ''  " data-nav-id="6" >
+                        <figure><img th:src="@{/assets/images/23.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">اطلاعات کاربری</a>
+                    </span>
+                    <span class="nav_items userTicket_class" th:classappend="${type} == 7 ? 'menu-active': ''  " data-nav-id="7">
+                        <figure><img th:src="@{/assets/images/headphone.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">تیکت</a>
+                    </span>
+                    <span class="nav_items addresses_class"  data-nav-id="1" th:classappend="${type} == 1 ? 'menu-active': ''  " >
+                        <figure><img th:src="@{/assets/images/28.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">آدرس ها</a>
+                    </span>
+                    <span class="nav_items"  >
+                        <figure><img th:src="@{/assets/images/29.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="/logout">خروج از حساب</a>
+                    </span>
+                </nav>
+            </div>
+            <div class="panel-menu-mobile">
+                <nav class="menu-content">
+                    <span class="nav_items orders_class" th:classappend="${type} == 5 ? 'menu-active': ''  "  data-nav-id="5">
+                        <figure><img th:src="@{/assets/images/25.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">سفارش های من</a>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+                    <span class="nav_items offCode_class"  data-nav-id="3">
+                        <figure><img th:src="@{/assets/images/26.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">تخفیف ها</a>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+<!--                    <span>-->
+<!--                        <figure><img th:src="@{/assets/images/27.svg}" alt=" بهتاتهویه"></figure>-->
+<!--                        <a href="#">مورد علاقه ها</a>-->
+<!--                        <i class="fa fa-angle-left"></i>-->
+<!--                    </span>-->
+                    <span class="nav_items userInfo_class" data-nav-id="6">
+                        <figure><img th:src="@{/assets/images/23.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">اطلاعات کاربری</a>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+
+                    <span class="nav_items userTicket_class" th:classappend="${type} == 7 ? 'menu-active': ''  " data-nav-id="7">
+                        <figure><img th:src="@{/assets/images/headphone.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">تیکت</a>
+                    </span>
+                    <span class="nav_items addresses_class" th:classappend="${type} == 1 ? 'menu-active': ''  "  data-nav-id="1">
+                        <figure><img th:src="@{/assets/images/28.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="#">آدرس ها</a>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+                    <span>
+                        <figure><img th:src="@{/assets/images/29.svg}" alt=" بهتاتهویه"></figure>
+                        <a href="/logout">خروج از حساب</a>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+                </nav>
+            </div>
+        </aside>
+
+        <input hidden class="isFromWalletCharge" th:data-type="${failed}" th:value="${walletChargeFlag}">
+
+        <div id="active_nav" class=" col-lg-9 col-md-6 col-sm-12">
+            <section id="nav_body"></section>
+        </div>
+    </div>
+</div>
+
+
+<div th:remove="tag" th:fragment="script">
+    <script th:src="@{/assets/js/lib/dataTable.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/oldJs/lib/map/ol.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/pages/addressMap.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/pages/ticket/ticket.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/pages/ticket/ticketMessage.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/pages/userPanel/userPanel.js}" type="text/javascript"></script>
+</div>
+
+
+</body>
+
+</html>

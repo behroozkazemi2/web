@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:remove="tag" th:fragment="style">
+
+
+</div>
+
+<body>
+
+<div th:remove="tag" th:fragment="content">
+
+    <div th:replace="fragment/homePageFragment.html::content_1"></div>
+    <div th:replace="fragment/homePageFragment.html::content_2"></div>
+    <section id="bestselling-product">
+        <div class="product-carousel">
+            <h3 class="title">پرفروش ترین محصولات</h3>
+            <div id="top_product" class="top-product-carousel owl-carousel">
+            </div>
+
+        </div>
+    </section>
+    <section id="ads-banner">
+        <div class="ads-banner">
+            <div class="banner-item col-6">
+                <figure>
+                    <a href="#"><img th:src="@{/assets/images/air-conditioner-guide-2.jpg}" alt=" بهتاتهویه"></a>
+                </figure>
+            </div>
+            <div class="banner-item col-6">
+                <figure>
+                    <a href="#"><img th:src="@{/assets/images/Screenshot 2024-06-11 233311.png}" alt=" بهتاتهویه"></a>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <section id="newest-product">
+        <div class="product-carousel">
+            <h3 class="title">جدیدترین محصولات</h3>
+            <div id="new_product" class=" new-product-carousel owl-carousel" >
+            </div>
+
+        </div>
+    </section>
+    <section id="ctg-banner">
+        <div class="ctg-banner">
+            <div class="banner-item col-4">
+                <figure>
+                    <a href="/category/1"><img th:src="@{/assets/images/6.svg}" alt=" بهتاتهویه"></a>
+                </figure>
+            </div>
+            <div class="banner-item col-4">
+                <figure>
+                    <a href="/category/2"><img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه"></a>
+                </figure>
+            </div>
+            <div class="banner-item col-4">
+                <figure>
+                    <a href="/category/3"><img th:src="@{/assets/images/8.svg}" alt=" بهتاتهویه"></a>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <section id="latest-seen">
+        <div class="product-carousel">
+            <h3 class="title">بازدیدهای اخیر</h3>
+            <div id="last-seen" class="owl-carousel last-seen-product-carousel" >
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<div th:remove="tag" th:fragment="script">
+    <script th:src="@{/assets/js/pages/homePage/homePage.js}" type="text/javascript"></script>
+</div>
+
+</body>
+</html>

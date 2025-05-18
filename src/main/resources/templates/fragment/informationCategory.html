@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:cellpadding="http://www.w3.org/1999/xhtml">
+
+
+<div th:remove="tag" th:fragment="info">
+    <section th:if="${#lists.size(response)} != 0" class="justify-content-center font-weight-bold"
+             style="margin-bottom: 50px !important;">
+        <h4 class="icon-boxes">مشخصات</h4>
+        <section class="row col-12 mt-4">
+            <section th:each="cat : ${response} " th:remove="tag" >
+                <h5 class="col-2" style="border-right: 4px dashed #265CC7"> [[${cat.informationCategoryName}]]</h5>
+                <section class="col-4 row">
+                    <div class="col-12 row mt-4 mb-2" th:each="info : ${cat.info} ">
+                        <span class="col-2 text-muted-2">[[${info.name}]]</span>
+                        <span class="col-6" style="border-bottom: 1px dashed #265CC7;padding-bottom:10px" >[[${info.value}]]</span>
+                    </div>
+                </section>
+            </section>
+        </section>
+
+    </section>
+</div>
+<div th:remove="tag" th:fragment="comment">
+    <section th:if="${#lists.size(response)} != 0" class="justify-content-center font-weight-bold"
+             style="margin-bottom: 50px !important;">
+        <h4 class="icon-boxes">مشخصات</h4>
+        <section class="row col-12 mt-4">
+            <section th:each="cat : ${response} " th:remove="tag" >
+                <h5 class="col-2" style="border-right: 4px dashed #265CC7"> [[${cat.informationCategoryName}]]</h5>
+                <section class="col-4 row">
+                    <div class="col-12 row mt-4 mb-2" th:each="info : ${cat.info} ">
+                        <span class="col-2 text-muted-2">[[${info.name}]]</span>
+                        <span class="col-6" style="border-bottom: 1px dashed #265CC7;padding-bottom:10px" >[[${info.value}]]</span>
+                    </div>
+                </section>
+            </section>
+        </section>
+
+    </section>
+</div>
+
+</html>

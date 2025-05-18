@@ -1,0 +1,4 @@
+user-agent: *
+
+
+Sitemap: https://shop.behtatahvie.com/sitemap.xml

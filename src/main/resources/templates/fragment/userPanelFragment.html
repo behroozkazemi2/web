@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="fa"
+      dir="rtl"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+
+<div th:fragment="dashboard" th:remove="tag">
+    <div class="panel-main">
+        <section id="user-info-dashboard" class="box-shadow">
+            <div class="user-info-header">
+                <span>اطلاعات کاربری</span>
+                <button id="user-edit" type="button" class="btn btn-outline-info">ویرایش اطلاعات</button>
+            </div>
+            <div class="user-info-main">
+                <div class="user-name">
+                    <span>نام و نام خانوادگی:</span>
+                    <span>[[${detail.firstName}]] [[ ${detail.lastName}]]</span>
+                </div>
+                <div class="user-phone">
+                    <span>شماره تلفن همراه:</span>
+                    <span>[[${detail.mobile}]]</span>
+                </div>
+                <div class="user-email">
+                    <span>پست الکترونیک:</span>
+                    <span>-</span>
+                </div>
+                <div class="user-email">
+                    <span>کد ملی:</span>
+                    <span>[[${detail.nationalCode}]]</span>
+                </div>
+            </div>
+        </section>
+        <section id="last-order" class="box-shadow">
+            <div class="last-order-header">
+                <span>آخرین سفارش ها</span>
+                <button id="order-list" type="button" class="btn btn-outline-info">مشاهده لیست سفارش ها</button>
+            </div>
+            <div class="last-order-main">
+                <table style="text-align: center" th:if=" ${orders} != null and ${#lists.size(orders)} != 0"
+                       id="last-order-table">
+                    <thead>
+                    <tr>
+                        <th>شماره سفارش</th>
+                        <th>تاریخ ثبت سفارش</th>
+<!--                        <th>مبلغ قابل پرداخت</th>-->
+                        <th>نحوه پرداخت</th>
+                        <th>مبلغ کل</th>
+                        <th>وضعیت پرداخت</th>
+                        <th>جزییات</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="ord, iter:${orders}" th:if="${iter.index} < 6">
+                        <td class="order-no">[[${ord.trackingCode}]]</td>
+                        <td class="order-date">[[${ord.insertDateString}]]</td>
+<!--                        <td class="order-nopay">0</td>-->
+                        <td class="order-nopay">[[${ord.paymentMethod.name}]]</td>
+                        <td class="order-price"><span>
+                            [[${#numbers.formatDecimal(ord.payableAmount, 0, 'COMMA', 0, 'POINT')}]]
+                            تومان
+                        </span></td>
+                        <td class="order-state"
+                            th:classappend=" ( ${ord.status.id} == 1 ? ' failed' :' ' )" >
+                            <span th:text="${ord.status.id == 2 and ord.paymentMethod.id == 2 ? 'در انتظار تماس تیم پشتیبانی' : ord.status.name}"></span>
+                        </td>
+                        <td>
+                            <button id="go-to-order-details" th:data-id="${ord.billId}" class="go-to-order-details"
+                                    type="button">
+                                <i class="fa fa-angle-left "></i>
+                                <span class="button-loading spinner-border loading-btn d-none"></span>
+
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div th:unless=" ${orders} != null and ${#lists.size(orders)} != 0" class="empty-content ">
+                    <div class="order-empty d-flex flex-column justify-content-center align-items-center text-center">
+                        <img th:src="@{/assets/images/icons/41.svg}" alt=" بهتاتهویه">
+                        <h6>هنوز سفارشی ثبت نکرده اید!</h6>
+                        <span>می توانید با افزودن محصولات موردنظر خود به سبد خرید و تکمیل فرآیند خرید، اولین سفارش خود را تکمیل نمایید.</span>
+                        <a href="/#bestselling-product" target="_parent" class="btn btn-info" id="view-bestselling">مشاهده
+                            محصولات پرفروش</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div th:fragment="addresses" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="address">
+            <div class="address-header">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+                    آدرس های شما
+                </span>
+                <button type="button" id="new-address">ثبت آدرس جدید</button>
+            </div>
+            <div class="address-box">
+            </div>
+            <div class="loading-box">
+                <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                <div class="loading"></div>
+            </div>
+
+            <!-- if content is empty ...-->
+        </section>
+    </div>
+
+    <!--TO Do Hassan-->
+    <div class="new-address-mobile">
+        <div id="new-address-mobile" class="sideNewAddress">
+            <div class="address-mobile-box box-shadow">
+                <div class="address-modal-header">
+                    <h6>افزودن آدرس جدید</h6>
+                    <span class="closebtn" onclick="closeNewAddress()">&times;</span>
+                </div>
+                <div class="address-modal-body">
+                        <span>
+                            <img th:src="@{/assets/images/icons/19.svg}" alt=" بهتاتهویه">
+آدرس شما بصورت پیش فرض با توجه به موقعیت مکانی شما در نظر گرفته شده است.
+                        </span>
+                    <form action="">
+                        <div class="col-6">
+                            <label for="state-field">استان</label>
+                            <input type="text" id="state-field" placeholder="خراسان رضوی" >
+                        </div>
+                        <div class="col-6">
+                            <label for="city-field">شهر</label>
+                            <input type="text" id="city-field" placeholder="مشهد" >
+                        </div>
+                        <div class="col-6">
+                            <label for="city-field">عنوان</label>
+                            <input type="text" id="address_title_mobile" class="address_title_mobile">
+                        </div>
+                        <div class="col-12">
+                            <label for="address-field">نشانی پستی</label>
+                            <input type="text" id="address-field_mobile" class="address-field_mobile"
+                                   name="address_mobile"
+                                   placeholder="آدرس خود را با دقت و جزئیات وارد نمایید. با انتخاب از روی نقشه این فیلد به صورت اتومات تکمیل خواهد گردید.">
+                        </div>
+
+                        <div class="map col-12" id="kt_location_mobile" style="min-width: 300px;height: 300px;"></div>
+                        <div id="error_map_mobile" style="color: red"></div>
+                    </form>
+                </div>
+                <div class="address-modal-footer">
+                    <button type="button" class="address-cancel btn btn-secondary" onclick="closeNewAddress()">انصراف
+                    </button>
+                    <button type="button" class="address-confirm btn btn-primary address-confirm-mobile">ثبت و تأیید
+                        آدرس
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="new-address-button box-shadow">
+        <img th:src="@{/assets/images/icons/21.svg}" alt=" بهتاتهویه">
+        <button class="btn openbtn open_new_address_form_mobile"  type="button">آدرس جدید</button>
+        <i class="fa fa-angle-left"></i>
+    </div>
+
+    <div id="kt_modal_remote" class="modal fade" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div th:fragment="addressList" th:remove="tag">
+
+    <div th:if="${address} != null and ${#lists.size(address)} != 0" style="cursor: pointer" th:each="ad:${address}"
+         th:data-id="${ad.id}"
+         class="address-item ">
+        <div class="address-content">
+            <h6>[[${ad.title}]]</h6>
+            <span><i class="icon icon-map-marker"></i>[[${ad.address}]]</span>
+        </div>
+        <div class="address-button">
+            <div class="del-address dropdown">
+                <button data-id="${ad.id}" id="del-address" class="dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="icon icon-menu-5"></i>
+                </button>
+                <div id="delete-address" th:data-id="${ad.id}" class="del-address-menu dropdown-menu delete-address"
+                     aria-labelledby="del-address">
+                    <a href="#" class="dropdown-item">حذف آدرس</a>
+                </div>
+            </div>
+            <button th:data-id="${ad.id}" class="edit-address" id="edit-address-button" type="button">ویرایش آدرس
+                <i class="fa fa-angle-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <div th:unless=" ${address} != null and ${#lists.size(address)} != 0" class="empty-content ">
+        <div class="address-empty d-flex flex-column justify-content-center align-items-center text-center">
+            <img src="/assets/images/icons/44.svg" alt=" بهتاتهویه">
+            <h6>هنوز آدرسی را اضافه نکرده‌اید!</h6>
+            <span>
+                        با انتخاب گزینه "ثبت آدرس جدید" از کادر بالا، می‌توانید آدرس‌های خود را اضافه کنید.
+                    </span>
+        </div>
+    </div>
+
+</div>
+<div th:fragment="addressList_changable" th:remove="tag">
+    <!--    <div th:each="ad:${address}" th:data-id="${ad.id}" class="address-item address_change  address-box box-shadow col-12">-->
+    <div th:each="ad:${address}"  th:data-id="${ad.id}"
+         class="address-item address-box box-shadow col-12"
+         th:classappend="${selectedAddressId} == ${ad.id} ? 'selected_border' : '' ">
+        <input th:if="${selectedAddressId} == ${ad.id} ? 'checked' : '' " th:class="'user_address_id radio_' + ${ad.id} " th:data-id="${ad.id}"
+               name="address_selected"
+               type="radio" id="select-address">
+        <div class="address-body">
+            <h6>[[${ad.title}]]</h6>
+            <span><i class="icon icon-map-marker"></i>[[${ad.address}]]</span>
+        </div>
+        <!--        <button th:data-id="${ad.id}" data-id="2" class="edit-address" id="edit-address" type="button">ویرایش آدرس-->
+        <!--            <i class="fa fa-chevron-left"></i>-->
+        <!--        </button>-->
+    </div>
+    <div th:if=" ${address} == null or ${#lists.size(address)} == 0" class="empty-content ">
+        <div class="address-empty d-flex flex-column justify-content-center align-items-center text-center">
+            <img src="/assets/images/icons/44.svg" alt=" بهتاتهویه">
+            <h6>هنوز آدرسی را اضافه نکرده‌اید!</h6>
+            <span>
+                        با انتخاب گزینه "ثبت آدرس جدید" از کادر بالا، می‌توانید آدرس‌های خود را اضافه کنید.
+                    </span>
+        </div>
+    </div>
+
+</div>
+<div th:fragment="address_modal" th:remove="tag">
+    <div class="address-modal-header modal-header">
+        <h6 class="modal-title" id="addAddressLabel">[[${title}]]</h6>
+        <span class="modal-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+    </div>
+    <div class="address-modal-body modal-body">
+        <span>
+                                    <img th:src="@{/assets/images/icons/19.svg}" alt=" بهتاتهویه">
+                                    [[${info}]]
+                                </span>
+        <form action="" th:object="${data}">
+            <div class="col-6">
+                <label for="state-field">استان</label>
+                <input type="text" id="state-field" placeholder="خراسان رضوی" th:value="*{province}">
+            </div>
+            <div class="col-6">
+                <label for="city-field">شهر</label>
+                <input type="text" id="city-field" placeholder="مشهد" th:value="*{city}">
+            </div>
+            <input hidden id="address_id" th:value="*{id}">
+            <div class="col-6">
+                <label for="city-field">عنوان</label>
+                <input type="text" id="address_title" class="address_title" placeholder="مثلاً خانه، اداره، مغازه و..."
+                       th:value="*{title}">
+            </div>
+            <div class="col-6">
+                <label for="city-field">کد پستی</label>
+                <input type="text" id="postalCode" class="postalCode" placeholder="کد پستی را وارد نمایید."
+                       th:value="*{postalCode}">
+            </div>
+            <div class="col-12">
+                <label for="address-field">نشانی پستی</label>
+                <input th:value="*{address}" type="text" id="address-field" name="address" class="address-field" th:disabled="*{address} == null ? true : false"
+                       placeholder="ابتدا از روی نقشه موقعیت مکانی خود را مشخص نمایید.">
+            </div>
+
+            <input class="latlon" hidden th:data-lat="*{lat}" th:data-lon="*{lng}">
+            <div class="map col-12" id="kt_location" style="min-width: 460px;height: 460px;"></div>
+            <div id="error_map" style="color: red"></div>
+            <input hidden id="providerId" name="providerId">
+        </form>
+    </div>
+    <div class="address-modal-footer modal-footer">
+        <button type="button" class="address-cancel btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+        <button id="confirm-location" type="button" class="address-confirm btn btn-primary">ثبت و تأیید آدرس</button>
+    </div>
+
+</div>
+
+<div th:fragment="interests" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="interest">
+            <div class="interest-title">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+                    کالاهای موردعلاقه
+                </span>
+            </div>
+            <div class="interest-box">
+                <div class="interest-item">
+                    <figure style="align-content: center"><img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه"></figure>
+                    <div class="interest-item-details">
+                        <div class="interest-item-header">
+                            <h6>پنیر خامه ای ویلی 200 گرمی بیضی کاله</h6>
+                            <button id="interest-item-menu" class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <i class="icon icon-menu-5"></i>
+                            </button>
+                            <div class="interest-item-menu dropdown-menu" aria-labelledby="interest-item-menu">
+                                <a href="#" class="dropdown-item">افزودن به سبد خرید</a>
+                                <a href="#" class="dropdown-item" style="color: var(--main-color);">حذف کالا</a>
+                            </div>
+                        </div>
+                        <div class="interest-item-footer">
+                            <span>165,000 تومان</span>
+                            <button>مشاهده محصول<i class="fa fa-angle-left"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="interest-item">
+                    <figure style="align-content: center"><img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه"></figure>
+                    <div class="interest-item-details">
+                        <div class="interest-item-header">
+                            <h6>پنیر خامه ای ویلی 200 گرمی بیضی کاله</h6>
+                            <button id="interest-item-menu" class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <i class="icon icon-menu-5"></i>
+                            </button>
+                            <div class="interest-item-menu dropdown-menu" aria-labelledby="interest-item-menu">
+                                <a href="#" class="dropdown-item">افزودن به سبد خرید</a>
+                                <a href="#" class="dropdown-item" style="color: var(--main-color);">حذف کالا</a>
+                            </div>
+                        </div>
+                        <div class="interest-item-footer">
+                            <span>165,000 تومان</span>
+                            <button>مشاهده محصول<i class="fa fa-angle-left"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="pagination">
+                <ul class="pagination">
+                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-left"></i></a></li>
+                </ul>
+            </div>
+            <!--  if content is empty ...-->
+            <div class="empty-content d-none">
+                <div class="interest-empty d-flex flex-column justify-content-center align-items-center text-center">
+                    <img th:src="@{/assets/images/icons/43.svg}" alt=" بهتاتهویه">
+                    <h6>هنوز کالایی را به لیست موردعلاقه خود اضافه نکرده‌اید!</h6>
+                    <span>
+                        با انتخاب آیکن
+                        <i class="fa fa-heart-o"></i>
+                        می‌توانید پیوند‌ها را به لیست موردعلاقه خود اضافه کنید.
+                    </span>
+                    <a href="/#bestselling-product" target="_parent" class="btn btn-info" id="view-bestselling">مشاهده
+                        محصولات پرفروش</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+<div th:fragment="offCode" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="off">
+            <div class="off-title">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+                    تخفیف ها
+                </span>
+            </div>
+            <div class="off-box">
+            </div>
+            <div class="loading-box">
+                <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                <div class="loading"></div>
+            </div>
+
+        </section>
+        <!-- if content is empty ...-->
+    </div>
+
+</div>
+
+<div th:fragment="offCodeList" th:remove="tag">
+    <div th:if="${offCodes} != null and  ${#lists.size(offCodes)} != 0" th:each="of:${offCodes}" class="off-item">
+        <div class="off-header">
+            <h6>[[${of.explain}]]</h6>
+            <span style="font-size: 12px; color: #8F90A6;">پایان مدت اعتبار:
+                                <span>[[${of.stExpireDate}]]</span></span>
+        </div>
+        <div class="off-main">
+            <code class="copy_value_to_clip_board_value">[[${of.offCode}]]</code>
+            <button class="copy_value_to_clip_board" th:data-id="${of.offCode}">کپی کردن
+                <svg xmlns="http://www.w3.org/2000/svg" width="20.335" height="20"
+                     viewBox="0 0 20.335 24.157">
+                    <path id="copy"
+                          d="M12.786,24.157H3.775A3.779,3.779,0,0,1,0,20.383V7.6A3.779,3.779,0,0,1,3.775,3.822h9.012A3.779,3.779,0,0,1,16.561,7.6V20.383A3.779,3.779,0,0,1,12.786,24.157ZM3.775,5.709A1.89,1.89,0,0,0,1.887,7.6V20.383A1.89,1.89,0,0,0,3.775,22.27h9.012a1.89,1.89,0,0,0,1.887-1.887V7.6a1.89,1.89,0,0,0-1.887-1.887ZM20.335,18.024V3.775A3.779,3.779,0,0,0,16.561,0H6.086a.944.944,0,0,0,0,1.887H16.561a1.89,1.89,0,0,1,1.887,1.887V18.024a.944.944,0,1,0,1.887,0Zm0,0"
+                          fill="#457b9d"/>
+                </svg>
+
+            </button>
+        </div>
+        <div class="off-footer">
+                            <span>قابل استفاده برای:
+                                <span>[[${of.remainUsage}]] سفارش دیگر</span>
+                            </span>
+        </div>
+    </div>
+    <div th:unless="${offCodes} != null and ${#lists.size(offCodes)} != 0" class="empty-content ">
+        <div class="off-empty d-flex flex-column justify-content-center align-items-center text-center">
+            <img th:src="@{/assets/images/icons/42.svg}" alt=" بهتاتهویه">
+            <h6>کد تخفیف فعالی برای شما ثبت نشده است!</h6>
+            <span>در صورتی که کد تخفیفی به شما تعلق گیرد، از طریق پیامک به شما اطلاع رسانی می گردد.</span>
+        </div>
+    </div>
+
+</div>
+
+<div th:fragment="orderDetails" th:remove="tag">
+
+    <div th:object="${order}" class="panel-main box-shadow">
+        <section id="order-details">
+            <div class="order-details-header">
+                <a href="/UserPanel?type=5"><i class="fa fa-angle-right"></i>جزییات سفارش</a>
+                <span>[[*{insertDate}]]</span>
+                <span>[[*{trackingCode}]]</span>
+            </div>
+            <div class="order-details-main">
+                <div class="order-details-info row">
+                    <div class="info-item1 col-6">
+                        <span>تحویل گیرنده:</span>
+                        <span th:text="${userInfo.firstName} + ' ' + ${userInfo.lastName} "></span>
+                    </div>
+                    <div class="info-item2 col-6">
+                        <span>شماره تماس:</span>
+                        <span style="direction: ltr" th:text="${userInfo.mobile} "></span>
+                    </div>
+                    <div class="info-item3 col-12 mt-2">
+                        <span>ارسال به:</span>
+                        <span>[[*{address}]]</span>
+                    </div>
+                </div>
+                <div class="order-products">
+                    <table id="order-products" style="text-align: center">
+                        <thead>
+                        <tr>
+                            <th colspan="2">کالاهای سفارش داده شده</th>
+                            <th>تعداد</th>
+                            <th>قیمت واحد</th>
+                            <th>تخفیف‌ واحد</th>
+                            <th>قیمت نهایی</th>
+                            <th>عملیات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="pro : *{products}">
+                            <td style="cursor: pointer !important;" th:data-name="${pro.productName}"
+                                th:data-count="${pro.count}" th:data-pp-id="${pro.productProviderId}"
+                                class="product-image orderAgain"><img alt=" بهتاتهویه" th:src="'/thumbnail/files/0/'+ ${pro.imageId}">
+                            </td>
+                            <td style="cursor: pointer !important;" th:data-name="${pro.productName}"
+                                th:data-count="${pro.count}" th:data-pp-id="${pro.productProviderId}"
+                                class="product-name  orderAgain">[[${pro.productName}]]
+                            </td>
+                            <td class="product-count">[[${pro.count}]]</td>
+                            <td class="product-cost">
+                                [[${#numbers.formatDecimal(pro.price / pro.count, 0, 'COMMA', 0, 'POINT')}]]
+                                <!--                                [[${pro.price} / ${pro.count}]]-->
+                                تومان
+                            </td>
+                            <td class="product-off">
+                                <!--                                [[${pro.discount} / ${pro.count}]]-->
+                                [[${#numbers.formatDecimal(pro.discount / pro.count , 0, 'COMMA', 0, 'POINT')}]]
+                                تومان
+                            </td>
+                            <td class="product-total-price">
+                                [[${#numbers.formatDecimal(pro.finalPrice , 0, 'COMMA', 0, 'POINT')}]]
+                                <!--                                [${pro.finalPrice}]] -->
+                                تومان
+                            </td>
+                            <td><input th:data-count="${pro.count}" th:data-name="${pro.productName}"
+                                       th:data-pp-id="${pro.productProviderId}" class="btn orderAgain" id="order_again"
+                                       name="order_again" value="سفارش مجدد"></td>
+                            <!--                            <td class="product-total-price">[[${pro.price} - ${pro.discount} * ${pro.count}  ]]</td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="order-products-mobile">
+                        <div class="order-mobile-header">
+                            <h4>کالاهای سفارش داده شده</h4>
+                        </div>
+                        <div th:each="pro : *{products}" class="order-mobile-item">
+                            <div style="cursor: pointer !important;" th:data-name="${pro.productName}"
+                                 th:data-count="${pro.count}" th:data-pp-id="${pro.productProviderId}">
+                                <figure style="align-content: center"><img th:src="'/thumbnail/files/0/'+ ${pro.imageId}" alt=" بهتاتهویه"></figure>
+                            </div>
+                            <div>
+                                <h6 style="cursor: pointer !important;" th:data-name="${pro.productName}"
+                                    th:data-count="${pro.count}" th:data-pp-id="${pro.productProviderId}"
+                                    class="product-name">
+                                    [[${pro.productName}]]
+                                </h6>
+                                <span class="product-off">
+                                    [[${#numbers.formatDecimal(pro.discount / pro.count , 0, 'COMMA', 0, 'POINT')}]]
+                                    تومان
+                                </span>
+                                <span class="product-cost">
+                                    [[${#numbers.formatDecimal(pro.price / pro.count, 0, 'COMMA', 0, 'POINT')}]]
+                                    تومان
+                                </span>
+                            </div>
+                            <div>
+                                <button th:data-count="${pro.count}" th:data-name="${pro.productName}"
+                                        th:data-pp-id="${pro.productProviderId}" class="orderAgain" type="button"
+                                        id="order-again">سفارش مجدد
+                                </button>
+
+                                <span class="product-count"><span>[[${pro.count}]]</span><small>عدد</small></span>
+                                <span class="product-total-price">
+                                    [[${#numbers.formatDecimal(pro.finalPrice , 0, 'COMMA', 0, 'POINT')}]]
+                                    تومان
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="order-state-mobile">
+                <h6>تاریخچه تراکنش ها و جزییات پرداخت</h6>
+                <div class="order-details">
+                    <div>
+                        <span>روش پرداخت</span>
+                        <span>پرداخت اینترنتی</span>
+                    </div>
+                    <div>
+                        <span>وضعیت پرداخت</span>
+                        <span>
+                            <div th:each="st : ${order.steps}" th:if="${st.id} == ${order.currentStepId}" th:style="(${st.id} == 1 ?  'color:red' : '')">
+                            [[${st.name}]]
+                        </div>
+                        </span>
+                    </div>
+                    <div>
+                        <span>تاریخ پرداخت</span>
+                        <span>[[*{insertDate}]]</span>
+                    </div>
+                    <div>
+                        <span>هزینه ارسال</span>
+                        <span>به عهده خریدار</span>
+                    </div>
+                    <div>
+                        <span>کد تخفیف</span>
+                        <span>[[*{offCodeCode}]]</span>
+                    </div>
+                    <div>
+                        <span>هزینه کد‌‌تخفیف</span>
+                        <span>
+                                  [[${#numbers.formatDecimal(order.offCodeAmount, 0, 'COMMA', 0, 'POINT')}]]
+                        تومان
+                        </span>
+                    </div>
+                    <div>
+                        <span>مبلغ کل</span>
+                        <span>
+                                 [[${#numbers.formatDecimal(order.payableAmount, 0, 'COMMA', 0, 'POINT')}]]
+                            تومان
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="order-state-table">
+            <table id="order-state-table">
+                <thead>
+                <tr>
+                    <th>روش پرداخت</th>
+                    <th>وضعیت پرداخت</th>
+                    <th>تاریخ پرداخت</th>
+                    <th>هزینه ارسال</th>
+                    <th>کد‌تخفیف</th>
+                    <th>هزینه کد‌‌تخفیف</th>
+                    <th>مبلغ کل</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>پرداخت اینترنتی</td>
+                    <td style="color: #06C270;">
+                        <div th:each="st : ${order.steps}" th:if="${st.id} == ${order.currentStepId}" th:style="(${st.id} == 1 ?  'color:red' : '')">
+                            [[${st.name}]]
+                        </div>
+                    </td>
+                    <td>[[*{insertDate}]]</td>
+                    <td>
+                        [[${#numbers.formatDecimal(order.distanceAmount, 0, 'COMMA', 0, 'POINT')}]]
+                        <!--                        [[*{distanceAmount}]] -->
+                        تومان
+                    </td>
+                    <td>[[*{offCodeCode}]]</td>
+                    <td>
+                        <!--                        [[*{offCodeAmount}]]-->
+                        [[${#numbers.formatDecimal(order.offCodeAmount, 0, 'COMMA', 0, 'POINT')}]]
+
+                        تومان
+                    </td>
+                    <td>
+                        [[${#numbers.formatDecimal(order.payableAmount, 0, 'COMMA', 0, 'POINT')}]]
+                        <!--                        [[*{payableAmount}]]-->
+                        تومان
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:fragment="orders" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="orders">
+            <div class="order-header">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+                    تاریخچه سفارش ها
+                </span>
+                <div class="order-ctg">
+                    <ul class="nav nav-tabs" id="orderTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active factor_type" data-val="0" id="first-tab" data-bs-toggle="tab"
+                                    data-bs-target="#first" type="button" role="tab"
+                                    aria-selected="true">ثبت شده
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link factor_type" data-val="4" id="second-tab" data-bs-toggle="tab"
+                                    data-bs-target="#first" type="button" role="tab" aria-selected="false">تحویل شده</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link factor_type" data-val="1" id="third-tab" data-bs-toggle="tab"
+                                    data-bs-target="#first" type="button" role="tab" aria-selected="false">پرداخت ناموفق</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="orderTabContent">
+                        <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="first-tab">
+                            <div class="order-box">
+                            </div>
+                            <div class="loading-box">
+                                <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                                <div class="loading"></div>
+                            </div>
+
+                        </div>
+                        <!--                        <div class="tab-pane fade" id="second" role="tabpanel" aria-labelledby="second-tab">-->
+                        <!--                            <div class="order-box">-->
+
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="tab-pane fade" id="third" role="tabpanel" aria-labelledby="third-tab">-->
+                        <!--                            <div class="order-box">-->
+
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <!-- if content is empty ...-->
+        </section>
+
+    </div>
+
+</div>
+<div th:fragment="orderList" th:remove="tag">
+    <div th:if=" ${orders} != null and ${#lists.size(orders)} != 0" th:each="ord:${orders}" class="order-item">
+        <nav class="item-header">
+            <ul>
+                <li class="order-date">[[${ord.insertDateString}]]</li>
+                <li class="order-number">[[${ord.trackingCode}]]</li>
+                <li class="order-statue" th:text="${ord.status.id == 2 and ord.paymentMethod.id == 2 ? 'در انتظار تماس تیم پشتیبانی' : ord.status.name}" ></li>
+            </ul>
+        </nav>
+        <div class="item-main">
+            <figure th:if="${ord.productsName} != null" th:each="pro:${ord.productsName}" style="align-content: center">
+                <img th:if="${pro.value} != 0" th:src="@{'/thumbnail/files/0/' + ${pro.value}}" alt=" بهتاتهویه">
+                <img th:unless="${pro.value} != 0" th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+            </figure>
+        </div>
+        <div class="item-footer">
+            <nav class="item-footer-menu">
+                <ul>
+                    <li class="send-price"><span>هزینه ارسال:</span>
+
+                        1,000
+                        <!--                        [[${ord.shipAmount}]] -->
+                        تومان
+                    </li>
+                    <li class="off-price"><span>کد تخفیف:</span> [[${ord.offCodeString}]]</li>
+                    <li class="total-price"><span>مبلغ کل:</span>
+                        [[${#numbers.formatDecimal(ord.payableAmount, 0, 'COMMA', 0, 'POINT')}]]
+                        <!--                        [[${ord.payableAmount}]]-->
+                        تومان
+                    </li>
+                </ul>
+            </nav>
+            <div class="justify-content-end">
+            <a id="show_factor" th:href="'/info/orderFactor/'+${ord.billId}" target="_blank" class=" mx-4" >مشاهده فاکتور
+                <i class="fa fa-angle-left"></i>
+                <i class="button-loading spinner-border loading-btn d-none"></i>
+
+            </a>
+            <button id="go-to-order-details" th:data-id="${ord.billId}" class="go-to-order-details" type="button">جزییات
+                سفارش
+                <i class="fa fa-angle-left"></i>
+                <i class="button-loading spinner-border loading-btn d-none"></i>
+
+            </button>
+            </div>
+        </div>
+
+    </div>
+    <div th:unless="${orders} != null and ${#lists.size(orders)} != 0" class="empty-content ">
+        <div class="order-empty d-flex flex-column justify-content-center align-items-center text-center">
+            <img th:src="@{/assets/images/icons/41.svg}" alt=" بهتاتهویه">
+            <h6>هنوز سفارشی ثبت نکرده اید!</h6>
+            <span>می توانید با افزودن محصولات موردنظر خود به سبد خرید و تکمیل فرآیند خرید، اولین سفارش خود را تکمیل نمایید.</span>
+            <a href="/#bestselling-product" target="_parent" class="btn btn-info" id="view-bestselling">مشاهده محصولات
+                پرفروش</a>
+        </div>
+    </div>
+
+</div>
+
+
+<div th:fragment="walletCharge" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="user-charge">
+            <div class="user-charge-title">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+                    شارژ حساب کاربری
+                </span>
+            </div>
+            <div class="user-charge-details">
+                <form class="user-charge-form" action="">
+                    <label for="amount">مبلغی که می خواهید کیف پول خود را شارژ نمایید وارد کنید. (حداقل 10 هزارتومان)</label>
+                    <input type="text" id="amount" class="number_input" name="amount" placeholder="(به تومان) 100,000" min="10000"
+                           max="1000000" maxlength="9" required>
+                    <button type="button" id="charge_wallet">تایید و پرداخت</button>
+                </form>
+            </div>
+
+        </section>
+    </div>
+
+</div>
+
+<div th:fragment="userInfo" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="user-info">
+            <div class="user-info-title">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+                    ویرایش اطلاعات کاربری
+                </span>
+            </div>
+            <div class="user-info-details">
+                <form class="user-info-edit col-lg-5 col-sm-12">
+                    <div class="user-name">
+                        <label for="first-name">نام</label>
+                        <input class="col-sm-12" th:value="${detail.firstName} " type="text" id="first-name" required>
+                        <label for="last-name"> نام خانوادگی</label>
+                        <input class="col-sm-12" th:value="${detail.lastName} " type="text" id="last-name" required>
+                    </div>
+                    <div class="user-phone">
+                        <label for="user-phone">شماره تلفن همراه</label>
+                        <input class="col-sm-12" readonly disabled th:value="${detail.mobile} " id="user-phone" required>
+                    </div>
+                    <div class="user-phone mt-2">
+                        <label for="user-nationalCode" >کد ملی</label>
+                        <input class="col-sm-12" readonly disabled th:value="${detail.nationalCode} "  id="user-nationalCode" required>
+                    </div>
+                    <div class="user-alert">
+                        <span>
+                        <img th:src="@{/assets/images/icons/19.svg}" alt=" بهتاتهویه">
+                        برای تغییر شماره تلفن‌همراه و کد ملی با پشتیبانی تماس بگیرید.</span>
+                    </div>
+                    <div class="user-button">
+                        <input  class="col-sm-12" type="submit" id="user-submit-info" value="تایید و ثبت اطلاعات">
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </div>
+
+</div>
+
+<div th:fragment="ticket" th:remove="tag">
+
+    <div class="panel-main box-shadow">
+        <section id="address">
+            <div class="address-header">
+                <span>
+                    <a href="/UserPanel"><i class="fa fa-angle-right"></i></a>
+لیست تیکت ها
+                </span>
+                <button type="button" id="add-new-ticket" class="add-new-ticket">تیکت جدید</button>
+            </div>
+            <div class="address-box ">
+                <table id="ticket-table" class=" table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline ticket-table display nowrap" style="width:100%">
+                    <thead>
+                    <tr style="text-align-last: center;">
+                        <th>کدپیگیری</th>
+                        <th>موضوع</th>
+                        <th> تاریخ ثبت</th>
+                        <th>وضعیت تیکت</th>
+                        <th>عملیات</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="loading-box">
+                <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                <div class="loading"></div>
+            </div>
+        </section>
+    </div>
+
+    <div id="kt_modal_remote" class="kt_modal_remote modal fade" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

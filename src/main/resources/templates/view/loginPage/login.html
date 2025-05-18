@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+
+
+<body>
+<div th:remove="tag" th:fragment="style">
+    <link rel="stylesheet" th:href="@{/assets/css/login.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="بهتاتهویه">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="ورود/ثبت نام - بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta name="keywords" content=",تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه,بهتاتهویه, فروشگاه اینترنتی بهتاتهویه
+    بهتاتهویه, فروشگاه اینترنتی بهتاتهویه, تهویه مطبوع, چیلر, کولر گازی, تجهیزات تهویه, درباره ما, خرید آنلاین تهویه مطبوع">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ورود/ثبت نام - بهتاتهویه">
+    <meta property="og:description" content="ورود/ثبت نام - بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta property="og:url" content="https://shop.behtatahvie.com/about">
+    <meta property="og:site_name" content="فروشگاه اینترنتی بهتاتهویه">
+    <meta property="og:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ورود/ثبت نام - بهتاتهویه">
+    <meta name="twitter:description" content="ورود/ثبت نام - بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta name="twitter:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="32x32">
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://shop.behtatahvie.com/assets/media/logos/logo-1.png">
+    <meta name="msapplication-TileImage" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://shop.behtatahvie.com/about">
+    <title>ورود/ثبت نام - فروشگاه اینترنتی بهتاتهویه</title>
+</div>
+
+<div th:remove="tag" th:fragment="content">
+
+    <input hidden id="isLogIn" th:value="${login}">
+    <input hidden id="Referer" th:value="${Referer}">
+    <input hidden class="mobile_content" th:value="${mobile_content}">
+    <section class="log_in_content">
+    </section>
+</div>
+
+<div th:remove="tag" th:fragment="script">
+    <script th:src="@{/assets/oldJs/lib/convert-perInput-to-english.js}"></script>
+    <script th:src="@{/assets/oldJs/lib/jquery-validation/dist/jquery.validate.js}"></script>
+    <script th:src="@{/assets/oldJs/lib/jquery-validation/dist/additional-methods.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/oldJs/lib/persian-date.js}" type="text/javascript"></script>
+
+    <script th:src="@{/assets/oldJs/pages/logIn/logIn.js}"></script></div>
+
+
+
+</body>
+</html>

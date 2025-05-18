@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:remove="tag" th:fragment="style">
+    <link type="text/css" rel="stylesheet" th:href="@{/assets/css/othersPage.css}">
+    <style>
+        #footer {
+            display: none;
+        }
+    </style>
+    <title>خرید موفقیت آمیز از فروشگاه اینترنتی  بهتاتهویه </title>
+</div>
+
+
+<body>
+
+<div th:remove="tag" th:fragment="content">
+
+    <div class="content">
+
+        <h1 class="d-bugingg d-none">خرید موفقیت آمیز از فروشگاه اینترنتی بهتاتهویه</h1>
+
+        <section class="pay-success box-shadow d-flex flex-column align-items-center">
+            <img th:src="@{/assets/images/icons/39.svg}" alt=" بهتاتهویه">
+            <h1>سفارش شما با موفقیت ثبت گردید!</h1>
+            <p>
+                با تشکر از خرید شما، هزینه سفارش شما با موفقیت پرداخت شد.
+                <br>
+                همکاران ما در بهتاتهویه مشغول آماده سازی سفارش شما هستند.
+                <br>
+                به زودی و در زمان تعیین شده سفارش خود را دریافت خواهید کرد.
+            </p>
+            <span>کد‌ رهگیری تراکنش بانکی: <span class="order-code">[[${code}]]</span></span>
+            <div class="buttons d-flex justify-content-center">
+                <a href="/UserPanel?type=5" id="view-order" target="_parent">مشاهده سفارش</a>
+                <a th:href="'/info/orderFactor/' + ${billId}" target="_blank">مشاهده فاکتور</a>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+<div th:remove="tag" th:fragment="script"></div>
+
+</body>
+</html>

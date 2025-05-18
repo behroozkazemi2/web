@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<div th:remove="tag" th:fragment="style">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="X-UA-Compatible" content="ie=edge">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="بهتاتهویه">
+
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="پاسخ به سوالات متداول درباره محصولات تهویه مطبوع، چیلرها، کولرگازی‌ها و خدمات فروشگاه اینترنتی بهتاتهویه.">
+        <meta name="keywords" content="        ,تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه,بهتاتهویه, فروشگاه اینترنتی بهتاتهویه
+        سوالات متداول, FAQ, بهتاتهویه, چیلر, کولرگازی, تهویه مطبوع, فروشگاه اینترنتی بهتاتهویه, پشتیبانی بهتاتهویه">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="سوالات متداول | فروشگاه اینترنتی بهتاتهویه">
+        <meta property="og:description" content="پاسخ به سوالات متداول درباره محصولات تهویه مطبوع، چیلرها، کولرگازی‌ها و خدمات فروشگاه اینترنتی بهتاتهویه.">
+        <meta property="og:url" content="https://shop.behtatahvie.com/faq">
+        <meta property="og:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+        <meta property="og:type" content="website">
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="سوالات متداول | فروشگاه اینترنتی بهتاتهویه">
+        <meta name="twitter:description" content="پاسخ به سوالات متداول درباره محصولات تهویه مطبوع، چیلرها، کولرگازی‌ها و خدمات فروشگاه اینترنتی بهتاتهویه.">
+        <meta name="twitter:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="/assets/behta_logo/BehtaTahvie.png">
+
+        <!-- Alternate Links -->
+        <link rel="alternate" href="https://shop.behtatahvie.com" >
+        <link rel="alternate" href="https://behtatahvie.com" >
+
+        <!-- Canonical Link -->
+        <link rel="canonical" href="https://shop.behtatahvie.com/faq">
+
+        <title>سوالات متداول | فروشگاه اینترنتی بهتاتهویه</title>
+
+        <!-- Schema Markup for FAQ Page -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "سوال اول درباره محصولات بهتاتهویه چیست؟",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "پاسخ به سوال اول در مورد محصولات بهتاتهویه."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "چگونه می‌توانم چیلر مناسب برای نیاز خود را انتخاب کنم؟",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "پاسخ به سوال دوم در مورد انتخاب چیلر مناسب."
+                        }
+                    }
+                    // Add more questions and answers as needed
+                ]
+            }
+        </script>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/assets/css/slick.css">
+        <link rel="stylesheet" href="/assets/css/style.fontawesome.css">
+        <link rel="stylesheet" href="/assets/css/ekiticons.css">
+        <link rel="stylesheet" href="/assets/css/lib/slider/jquery-ui.min.css">
+        <link rel="stylesheet" href="/assets/css/lib/slider/owl.carousel.min.css">
+        <link rel="stylesheet" href="/assets/css/lib/slider/owl.theme.default.min.css">
+        <link rel="stylesheet" href="/assets/css/lib/slider/nouislider.min.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/header-style.css">
+        <link rel="stylesheet" href="/assets/css/new-style.css">
+        <link rel="stylesheet" href="/assets/oldJs/lib/bootstrap-toastr/toastr.css">
+        <link rel="stylesheet" href="/assets/css/responsive.css">
+
+        <div th:remove="tag" th:if="${view != null}">
+            <div th:remove="tag" th:include="${view}::style"></div>
+        </div>
+
+</div>
+<script th:src="@{/assets/js/lib/lottie/lottie-player.js}"></script>
+
+
+<body>
+
+<div th:remove="tag" th:fragment="content">
+
+    <div class="content">
+        <h1 class="title">پرسش های متداول</h1>
+        <section id="faq-header" class="box-shadow">
+            <p>
+                <i class="title-loading spinner-grow"></i>
+                توجه: مطالب این صفحه همواره در حال به روز رسانی است.
+            </p>
+
+            <div class="faq-category">
+                <a href="#register" class="faq-category-icon">
+                    <i class="fa fa-user-o"></i>
+                    <span>ثبت نام و پنل کاربری</span>
+                </a>
+                <a href="#order" class="faq-category-icon">
+                    <i class="icon icon-cart11"></i>
+                    <span>ثبت و پیگیری سفارش</span>
+                </a>
+                <a href="#offs" class="faq-category-icon">
+                    <i class="fa fa-percent"></i>
+                    <span>تخفیف ها</span>
+                </a>
+                <a href="#invite" class="faq-category-icon">
+                    <i class="fa fa-envelope-o"></i>
+                    <span>دعوت از دوستان</span>
+                </a>
+                <a href="#wallet" class="faq-category-icon">
+                    <i class="icon icon-wallet"></i>
+                    <span>کیف پول</span>
+                </a>
+                <a href="#app" class="faq-category-icon">
+                    <i class="icon icon-app"></i>
+                    <span>اپلیکیشن</span>
+                </a>
+            </div>
+        </section>
+        <section id="faq-main">
+            <div class="faq-category-item box-shadow" id="register">
+                <h3>ثبت نام و پنل کاربری</h3>
+                <div class="accordion" id="accordionRegister">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                چطور می توانم در وبسایت ثبت نام کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#accordionRegister">
+                            <div class="accordion-body">
+                                <p>
+                                    در سمت چپ قسمت هدر (سربرگ) سایت با کلیک بر روی قسمتی که علامت کاربر موجود بوده و یا عبارت "ورود / ثبت نام" درج شده است و یا کلیک بر روی
+                                    <a href="/login">این لینک</a> می توانید به قسمت ثبت نام وارد شوید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                من  قبلا در سایت ثبت نام نموده ام؛ چطور می توانم مجددا وارد سایت شوم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionRegister">
+                            <div class="accordion-body">
+                                <p>
+                                    در سمت چپ قسمت هدر (سربرگ) سایت با کلیک بر روی قسمتی که علامت کاربر موجود بوده و یا عبارت "ورود / ثبت نام" درج شده است، پس از اینکه شماره همراه خود را تایید نمودید، در صورتی که قبلا در سایت ثبت نام کرده باشید، به طور خودکار وارد سایت شده و نیاز به انجام هیچ کار دیگری نیست.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                برای ثبت نام در
+                                <a href="/"> بهتاتهویه</a>
+                                به چه اطلاعات و مدارکی نیاز است ؟
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionRegister">
+                            <div class="accordion-body">
+                                <p>
+                                    براساس سیاست ثبت نام آسان در
+                                    <a href="/"> بهتاتهویه</a>
+                                    ، شما برای ثبت نام در وبسایت
+                                    <a href="/"> بهتاتهویه</a>
+                                    تنها نیاز به یک شماره موبایل دارید! همچنین در راستای اجرای همین سیاست، شما از تعریف و وارد کردن هر گونه رمز عبورهای سخت و پیچیده که امکان فراموشی آن وجود دارد، بی نیاز خواهید بود و هر لحظه برای ورود به
+                                    <a href="/"> بهتاتهویه</a>
+                                    ، تنها کافی است کد تأیید ارسال شده به همان شماره موبایلی که معرفی کرده اید را در سیستم وارد کنید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                چگونه می توانم مشخصات کاربری خود را تغییر دهم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionRegister">
+                            <div class="accordion-body">
+                                <p>
+                                    شما می توانید با ورود به پنل کاربری، در قسمت اطلاعات کاربری نام و نام خانوادگی خود را ویرایش کنید. برای تغییر شماره تلفن همراه خود نیز می توانید با پشتیبانی تماس بگیرید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                آیا برای خرید از
+                                <a href="/"> بهتاتهویه</a>
+                                ، لزوماً باید در سایت ثبت نام نمود ؟
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionRegister">
+                            <div class="accordion-body">
+                                <p>
+                                    بله. به این دلیل که بهتاتهویه جهت هرگونه خدمات رسانی بهتر، می بایست اطلاعات کاربران را دسته بندی و تفکیک کرده تا هیچ گونه اخلال در عملیات پردازش و ارسال کالا ایجاد نشود.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-category-item box-shadow" id="order">
+                <h3>ثبت و پیگیری سفارش</h3>
+                <div class="accordion" id="accordionOrder">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                            	چگونه می توانم از
+                                <a href="/"> بهتاتهویه</a>
+                                خرید نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    پس از ثبت نام و ورود به وبسایت و نیز وارد کردن حداقل یک آدرس تحویل، می توانید سفارش خود را به راحتی و به صورت کاملا آنلاین (برخط) ثبت نموده و بدون هیچ اقدام دیگری منتظر دریافت سفارش از پیک
+                                    <a href="/"> بهتاتهویه</a>
+                                    بمانید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                                	چطور می توانم در بهتاتهویه سفارش خود را ثبت نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    در صورتی که در سایت یا اپلیکیشن ثبت نام کرده باشید، می توانید پس از افزودن کالاهای موردنظر خود به سبد خرید، بر روی گزینه "ثبت سفارش" و یا
+                                    <a href="/cart" target="_blank">این لینک</a> کلیک نموده و پس از تایید آدرس تحویل و پرداخت هزینه سفارش به صورت اینترنتی، سفارش خود را ثبت نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading8">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="true" aria-controls="collapse8">
+                                	آیا می توان به صورت تلفنی یا ارسال پیام به پشتیبانی (پیامک، شبکه های اجتماعی و ...) از بهتاتهویه خرید نمود ؟
+                            </button>
+                        </h2>
+                        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    خیر. بهتاتهویه این امکان را فراهم نموده که به راحتی و تنها در چند دقیقه بتوانید از طریق وبسایت یا اپلیکیشن سفارش خود را ثبت نمایید. تماس تلفنی و ارتباط گیری با پشتیبانی بهتاتهویه تنها برای حل مشکلات به وجود آمده مانند تاخیر در دریافت سفارش، عدم ثبت سفارش در سایت و .... است.                               </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading9">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
+                                چطور می توانم آدرس (های) خود را وارد نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    پس از ورود به پنل کاربری و قسمت <a href="/UserPanel?type=1" target="_blank">آدرس ها</a>، می توانید با کلیک بر روی گزینه "افزودن آدرس جدید" نشانی (های) خود را وارد نمایید. در این بخش، شما می توانید با وارد نمودن نشانی (به صورت کامل) و عنوان نشانی (مثلا خانه) و نیز مشخص کردن نشانی در نقشه، آدرس خود را ثبت نموده و هنگام خرید از آن استفاده نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading10">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="true" aria-controls="collapse10">
+                                	چگونه می توانم سفارش ثبت شده خودم را دریافت کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بهتاتهویه تمامی سفارش های ثبت شده را توسط پیک اختصاصی خود به آدرس معرفی شده از سوی کاربران ارسال می کند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading11">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                                چطور باید هزینه سفارش را پرداخت کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    شما پس از ثبت نهایی سفارش، به صفحه درگاه پرداخت بانک هدایت می شود که در آن صفحه می توانید توسط تمامی کارت های بانکی عضو شتاب خود که رمز اینترنتی (رمز دوم) دارند، هزینه سفارش خود را پرداخت نمایید. بهتاتهویه به دلایل متعدد از دریافت هزینه سفارش به صورت فیزیکی معذور است.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading12">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="true" aria-controls="collapse12">
+                                آیا امکان تعیین زمان دریافت سفارش را دارم ؟ یا اینکه بهتاتهویه در زمان انتخابی خود سفارش را برایم ارسال می کند ؟
+                            </button>
+                        </h2>
+                        <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بهتاتهویه همواره در تلاش است تا سفارشات را در سریع ترین زمان ممکن به کاربران تحویل دهد؛ با این حال شما می توانید در پس از تایید سبد خرید و در صفحه "<a
+                                        href="/checkOut" target="_blank">تسویه حساب</a>" زمان مدنظر خود برای دریافت سفارش را انتخاب نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading13">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="true" aria-controls="collapse13">
+                                چطور از ثبت سفارش خود مطمئن شوم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    پس از ثبت نهایی سفارش و پرداخت هزینه آن، در صورتی که به صفحه ای هدایت شدید که در آن به ثبت موفقیت آمیز سفارش شما اشاره شده است، می توانید از ثبت سفارش خود مطمئن شوید. همچنین در صورتی که سفارش شما با موفقیت ثبت شود، پیامکی با محتوای ثبت موفقیت آمیز سفارش از سوی
+                                    <a href="/"> بهتاتهویه</a>
+                                    دریافت خواهید کرد.                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading14">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="true" aria-controls="collapse14">
+                                چطور می توانم فاکتور سفارش خود را دریافت کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    پس از پرداخت هزینه سفارش و در بازگشت از صفحه درگاه پرداخت بانک، فاکتور شما به صورت الکترونیکی قابل مشاهده بوده و شما می توانید آن را ذخیره نمایید.                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading15">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="true" aria-controls="collapse15">
+                                چرا فاکتور به صورت کاغذی برای من ارسال نمی شود ؟
+                            </button>
+                        </h2>
+                        <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بهتاتهویه همواره در تلاش بوده تا خدمات خود را با کمترین آسیب وارد به محیط زیست به مشتریان ارائه دهد. به همین جهت تنها فاکتور را به صورت الکترونیکی دریافت خواهید کرد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading16">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse16" aria-expanded="true" aria-controls="collapse16">
+                                آیا می توانم سفارشم را ویرایش (حذف یا افزودن کالا) نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="heading16" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بله. بهتاتهویه این امکان را برای کاربران خود فراهم نموده است؛ به طوریکه اگر فاصله زمانی اقدام شما برای ویرایش سفارش تا زمان ارسال آن حداقل 3 ساعت است، می توانید کالا(ها)یی را از سفارش خود حذف نموده و یا کالا(ها)ی دیگری را به سفارش خود اضافه نمایید.                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading17">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="true" aria-controls="collapse17">
+                                آیا می توانم سفارشم را لغو کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="heading17" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بله. در صورتیکه فاصله زمانی اقدام شما برای لغو سفارش تا زمان ارسال آن حداقل 3 ساعت است، می توانید سفارش خود را لغو نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading18">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse18" aria-expanded="true" aria-controls="collapse18">
+                                آیا می توانم کالاهایی که موجود نیستند، در یک زمان دیگر سفارش دهم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse18" class="accordion-collapse collapse" aria-labelledby="heading18" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    تمامی کالاها در زمانی که موجود باشند امکان ثبت سفارش دارند. در حالتی که کالایی موجود نیست نمی توان آن را به سبد خرید اضافه کرد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading19">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="true" aria-controls="collapse19">
+                                آیا می توانم پس از ثبت سفارش، آدرس و زمان تحویل را تغییر دهم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="heading19" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    با توجه به سریع بودن ارسال سفارش و همچنین جهت جلوگیری از ایجاد اختلال در فرآیند پردازش و ارسال کالا به مشتریان، تغییر آدرس و زمان تحویل سفارش امکان پذیر نیست.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading20">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="true" aria-controls="collapse20">
+                                در صورت تاخیر در دریافت کالا چگونه باید اعتراض کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    شما می توانید مراتب اعتراض خود را با پشتیبانی
+                                    <a href="/"> بهتاتهویه</a>
+                                    از طریق روش های ارتباطی معرفی شده در صفحه "<a
+                                        href="/info/contactUs" target="_blank">تماس با ما</a>" در میان بگذارید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading21">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapse21">
+                                در صورتی که سفارش دریافتی آسیب دیده و یا با سفارش من مطابقت نداشته است، چطور باید حق خود را بازخواست کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse21" class="accordion-collapse collapse" aria-labelledby="heading21" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    کاربران بهتاتهویه هنگام تحویل سفارش خود از پیک، می بایست در حضور مأمور پیک کالاهای دریافتی را با کالاهای سفارش خود مطابقت داده و در صورت مشاهده هرگونه عیب، نقص و یا مغایرت با کالای سفارش داده شده در سایت، موارد را به پشتیبانی بهتاتهویه اطلاع دهند. در این گونه موارد در صورتی که حق کاربر احراز گردد، در اسرع وقت سفارش مدنظر بدون نقص و کاملا مطابق با سفارش کاربر تحویل می گردد. لازم به ذکر است، پس از بازگشت پیک از محل تحویل سفارش به مشتری، کاربر حق هر گونه اعتراض نسبت به محتوای سفارش را از خود سلب نموده است.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading22">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse22" aria-expanded="true" aria-controls="collapse22">
+                                سفارش خود را در بهتاتهویه ثبت کرده و هزینه آن را به صورت اینترنتی پرداخت نموده ام. وجه نیز از حسابم کسر شده اما پرداخت سفارشم تایید نشده است ؟ راه حل چیست ؟
+                            </button>
+                        </h2>
+                        <div id="collapse22" class="accordion-collapse collapse" aria-labelledby="heading22" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    این گونه موارد معمولا به علت اختلال در سرویس های ارائه دهنده درگاه بانک است. در این حالت، وجه کسر شده از حساب شما پس از نهایتا 72 ساعت به حسابتان باز می گردد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading23">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse23" aria-expanded="true" aria-controls="collapse23">
+                                آیا
+                                <a href="/"> بهتاتهویه</a>
+                                تنها کالاهای اصل را به فروش می رساند ؟
+                            </button>
+                        </h2>
+                        <div id="collapse23" class="accordion-collapse collapse" aria-labelledby="heading23" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بله. تمامی کالاهایی که
+                                    <a href="/"> بهتاتهویه</a>
+                                    به فروش می رساند از برندهای شناخته شده بوده و کیفیت آنها را تضمین می نماید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading24">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse24" aria-expanded="true" aria-controls="collapse24">
+                                در چه ساعاتی از شبانه روز می توانم خرید نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse24" class="accordion-collapse collapse" aria-labelledby="heading24" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    کاربران بهتاتهویه در تمامی 24 ساعت شبانه روز و در طول 7 روز هفته می توانند سفارش خود را ثبت نمایند. لازم به ذکر است، کلیه سفارشات در زمانی بین ساعت 9 الی 21 هر روز به مشتریان ارسال می گردد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading25">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapse25">
+                                چطور می توانم اطلاعات سفارشات قبلی خودم را مشاهده کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse25" class="accordion-collapse collapse" aria-labelledby="heading25" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    پس از ورود به پنل کاربری، در قسمت "<a href="/UserPanel?type=5" target="_blank">سفارش های من</a>" می توانید تاریخچه سفارشات خود را مشاهده کنید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading26">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse26" aria-expanded="true" aria-controls="collapse26">
+                                آیا امکان برگرداندن سفارش را دارم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse26" class="accordion-collapse collapse" aria-labelledby="heading26" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    با توجه به ماهیت کالاهای ارسالی از سمت
+                                    <a href="/"> بهتاتهویه</a>
+                                    ، امکان مرجوع کردن کالا وجود ندارد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading27">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse27" aria-expanded="true" aria-controls="collapse27">
+                                اگر در سفارشی که دریافت کردم تاریخ انقضای کالایی به اتمام رسیده بود، چگونه باید کالا را برگردانم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse27" class="accordion-collapse collapse" aria-labelledby="heading27" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    اگر هنگام دریافت کالا از پیک اختصاصی بهتاتهویه متوجه این موضوع شدید، می توانید در حضور مأمور پیک با پشتیبانی تماس گرفته و موضوع را اطلاع دهید. در این گونه موارد، مأمور پیک کالایی که تاریخ انقضای آن تمام شده را از شما تحویل گرفته و در اسرع وقت کالای جایگزین برای شما ارسال می گردد. تأکید می گردد، در صورت عدم بررسی سفارش توسط مشتری در محل و پس از بازگشت مأمور پیک، مشتری حق هرگونه اعتراض را از خود سلب نموده است.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading28">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse28" aria-expanded="true" aria-controls="collapse28">
+                                هزینه ارسال سفارش چقدر است ؟
+                            </button>
+                        </h2>
+                        <div id="collapse28" class="accordion-collapse collapse" aria-labelledby="heading28" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    با توجه به محدوده مکانی و کالاهایی که
+                                    <a href="/"> بهتاتهویه</a>
+                                    آنها را در قالب سفارشات ارسال می کند، مبلغ 1000 تومان به عنوان هزینه ارسال تمامی سفارشات در نظر گرفته شده است.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading29">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse29" aria-expanded="true" aria-controls="collapse29">
+                                در صورتی که ارسال سفارش در زمان یا مکان انتخابی من ممکن نیست وظیفه من چیست ؟
+                            </button>
+                        </h2>
+                        <div id="collapse29" class="accordion-collapse collapse" aria-labelledby="heading29" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    در این گونه مواقع از سوی پشتیبانی
+                                    <a href="/"> بهتاتهویه</a>
+                                    با شما تماس برقرار شده و زمان یا مکان دیگری برای ارسال و دریافت سفارش تعیین می گردد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading31">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse31" aria-expanded="true" aria-controls="collapse31">
+                                در صورتی که نتوانم در زمان انتخابی دریافت سفارش در محل حضور پیدا کنم، آیا بهتاتهویه مجددا سفارش مرا ارسال می کند ؟
+                            </button>
+                        </h2>
+                        <div id="collapse31" class="accordion-collapse collapse" aria-labelledby="heading31" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بله. شما می توانید با پشتیبانی تماس گرفته و موضوع را مطرح کنید. زمان و مکان جدید برای ارسال و دریافت سفارش به شما پیشنهاد می گردد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading32">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse32" aria-expanded="true" aria-controls="collapse32">
+                                کالاهایی که در سایت ناموجود هستند، چه زمانی موجود خواهند شد ؟
+                            </button>
+                        </h2>
+                        <div id="collapse32" class="accordion-collapse collapse" aria-labelledby="heading32" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    موجودیت کالاهای عرضه شده در بهتاتهویه با دو برچسب "موجود" و "ناموجود" مشخص شده است. در صورتی که کالایی در وضعیت "ناموجود" است، به این معناست که موجودی این کالا در انبار به اتمام رسیده است. از آنجایی که بهتاتهویه ، مرتباً وضعیت موجودی کالاهای خود را بررسی و به روز می کند؛ در صورتی که مجدداً کالای مذکور موجود گردد، وضعیت آن به "موجود" تغییر می یابد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading33">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse33" aria-expanded="true" aria-controls="collapse33">
+                                چطور می توانم وجه پرداخت شده پس از لغو سفارش خود را دریافت نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse33" class="accordion-collapse collapse" aria-labelledby="heading33" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    در صورتی که سفارش شما به هر دلیلی لغو گردد، وجه آن مستقیماً به کیف پول شما واریز می گردد. در صورتی که میخواهید وجه را از کیف پول برداشت کنید، می توانید با پشتیبانی تماس گرفته و شماره شبای متعلق به خودتان را جهت دریافت وجه اعلام نمایید. وجه موردنظر نهایتا تا 72 ساعت به حساب بانکی شما واریز می گردد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading34">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse34" aria-expanded="true" aria-controls="collapse34">
+                                حداقل مبلغ سفارش از بهتاتهویه چقدر است ؟
+                            </button>
+                        </h2>
+                        <div id="collapse34" class="accordion-collapse collapse" aria-labelledby="heading34" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    مبلغ سبد خرید شما حداقل می بایست 40 هزارتومان است.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading35">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse35" aria-expanded="true" aria-controls="collapse35">
+                                اگر وجه پرداختی من برای یک کالا بیشتر از مبلغ درج شده بر روی آن بود، باید چه کاری انجام دهم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse35" class="accordion-collapse collapse" aria-labelledby="heading35" data-bs-parent="#accordionOrder">
+                            <div class="accordion-body">
+                                <p>
+                                    بهتاتهویه براساس سیاست های قیمت گذاری خود همواره کالاها را زیر قیمت درج شده بر روی محصول به فروش می رساند. با این حال، در صورتی که مبلغ کالایی که بر روی آن درج شده از وجه پرداخت شده شما کمتر است، می توانید این موضوع را با پشتیبانی در میان بگذارید. در صورت احراز صحت ادعای شما، بهتاتهویه اختلاف قیمت مذکور را به شیوه ای مناسب جبران خواهد کرد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-category-item box-shadow" id="offs">
+                <h3>تخفیف ها</h3>
+                <div class="accordion" id="accordionOffs">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading36">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse36" aria-expanded="true" aria-controls="collapse36">
+                                کد تخفیف خود را باید در کدام قسمت وارد نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse36" class="accordion-collapse collapse" aria-labelledby="heading36" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    شما می توانید پس از تایید سبد خرید و در صفحه "<a href="/checkOut" target="_blank">تسویه حساب</a>"، کد تخفیف خود را وارد نمایید. پس از وارد نمودن کد تخفیف، در صورتی که کد وارد شده معتبر است، سیستم به طور خودکار تخفیف را اعمال کرده و مبلغ سفارش شما به روز می گردد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading37">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse37" aria-expanded="true" aria-controls="collapse37">
+                                چطور می توانم کد تخفیف از بهتاتهویه دریافت کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse37" class="accordion-collapse collapse" aria-labelledby="heading37" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    بهتاتهویه در بازه های زمانی مختلف و در مناسبت ها و کمپین های خاص، کدهای تخفیف خود را از طریق پیامک، ایمیل و ... در اختیار کاربران خود قرار می دهد. به عبارت دیگر، بهتاتهویه موظف به ارائه کد تخفیف به کاربران در زمان های مشخص نیست. برای عضویت در خبرنامه و شبکه های اجتماعی بهتاتهویه به
+                                    <a href="/info/contactUs" target="_blank">این صفحه</a> مراجعه کنید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading38">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse38" aria-expanded="true" aria-controls="collapse38">
+                                کد تخفیف خود را گم کرده ام. چطور باید آن را پیدا کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse38" class="accordion-collapse collapse" aria-labelledby="heading38" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    می توانید در پنل کاربری و در قسمت <a href="/UserPanel?type=3" target="_blank">تخفیف ها</a>، تمامی کدهای تخفیف خود را مشاهده نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading39">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse39" aria-expanded="true" aria-controls="collapse39">
+                                چرا کد تخفیف بر روی سبد خرید من اعمال نمی شود ؟
+                            </button>
+                        </h2>
+                        <div id="collapse39" class="accordion-collapse collapse" aria-labelledby="heading39" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    همواره جزئیات هر کد تخفیفی که دریافت می کنید را به طور کامل و با دقت بررسی نمایید. ممکن است زمان آن سپری شده، شماره موبایل شما متفاوت بوده، نوبت خرید تفاوت کرده، محدوده مکانی کد یکسان نبوده یا کد را به اشتباه وارد کرده باشید (به بزرگ و کوچک بودن حروف کد دقت نمایید).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading40">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse40" aria-expanded="true" aria-controls="collapse40">
+                                آیا می توانم از چند کد تخفیفی که به من تعلق دارد در یک سفارش استفاده کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse40" class="accordion-collapse collapse" aria-labelledby="heading40" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    خیر. در هر سفارش تنها می توانید از یک کد تخفیف استفاده نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading41">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse41" aria-expanded="true" aria-controls="collapse41">
+                                طرح پیشنهاد ویژه چیست ؟ چطور می توانم از این طرح استفاده کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse41" class="accordion-collapse collapse" aria-labelledby="heading41" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    بهتاتهویه در بازه های زمانی مختلف، برخی از کالاهای خود را در قالب طرح "<span style="color: var(--main-color);">پیشنهاد ویژه</span>" برای فروش عرضه می کند. کالاهایی که در این طرح قرار می گیرند، از تخفیف به مراتب بیشتری نسبت به سایر کالاهای موجود در بهتاتهویه برخوردارند.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading42">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse42" aria-expanded="true" aria-controls="collapse42">
+                                چگونه می توانم از تخفیف ها و کمپین های بهتاتهویه اطلاع پیدا کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse42" class="accordion-collapse collapse" aria-labelledby="heading42" data-bs-parent="#accordionOffs">
+                            <div class="accordion-body">
+                                <p>
+                                    شما می توانید با عضویت در کانال ها و صفحه های بهتاتهویه در فضای مجازی (اینستاگرام، تلگرام و ...)  از این گونه موارد مطلع شوید. برای عضویت در صفحات مجازی بهتاتهویه
+                                    <a href="/info/contactUs" target="_blank">این لینک</a> را مشاهده کنید
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-category-item box-shadow" id="invite">
+                <h3>دعوت از دوستان</h3>
+                <div class="accordion" id="accordionInvite">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading43">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse43" aria-expanded="true" aria-controls="collapse43">
+                                چطور می توانم دوستانم را به بهتاتهویه دعوت کنم ؟ آیا این کار برای من امتیازی به همراه دارد ؟
+                            </button>
+                        </h2>
+                        <div id="collapse43" class="accordion-collapse collapse" aria-labelledby="heading43" data-bs-parent="#accordionInvite">
+                            <div class="accordion-body">
+                                <p>
+                                    برای هریک از کاربران بهتاتهویه ، کد تخفیفی در پنل کاربری و در قسمت <a href="/UserPanel?type=3" target="_blank">تخفیف ها</a> قرار داده شده که مخصوص دعوت از دوستان است. در صورتی که دوستان شما با این کد تخفیف اولین سفارش خود را از بهتاتهویه دریافت نمایند، به ازای هر دوستی که به بهتاتهویه دعوت کرده اید، یک کد تخفیف 20 هزارتومانی بدون قید و شرط دریافت خواهید کرد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading44">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse44" aria-expanded="true" aria-controls="collapse44">
+                                چطور می توانم از کد تخفیفی که از دوستم دریافت کرده ام استفاده نمایم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse44" class="accordion-collapse collapse" aria-labelledby="heading44" data-bs-parent="#accordionInvite">
+                            <div class="accordion-body">
+                                <p>
+                                    درصورتی که تاکنون کاربر بهتاتهویه نبوده و یا سفارشی را به ثبت نرسانده باشید، می توانید در اولین سفارش خود در صفحه "<a
+                                        href="/checkOut" target="_blank">تسویه حساب</a>" از کد تخفیف مذکور استفاده نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-category-item box-shadow" id="wallet">
+                <h3>کیف پول</h3>
+                <div class="accordion" id="accordionWallet">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading45">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse45" aria-expanded="true" aria-controls="collapse45">
+                                چگونه می توانم کیف پول خودم را شارژ کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse45" class="accordion-collapse collapse" aria-labelledby="heading45" data-bs-parent="#accordionWallet">
+                            <div class="accordion-body">
+                                <p>
+                                    با مراجعه به پنل کاربری و کلیک بر روی گزینه "<a href="/UserPanel?type=8" target="_blank">افزایش موجودی</a>" که با رنگ سبز مشخص شده است، می توانید کیف پول خود را حداقل 10 هزارتومان و حداکثر 1 میلیون تومان شارژ نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading46">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse46" aria-expanded="true" aria-controls="collapse46">
+                                اگر موجودی کیف پول من برای پرداخت مبلغ سفارش کافی نیست، چطور می توانم مبلغ سفارش را پرداخت کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse46" class="accordion-collapse collapse" aria-labelledby="heading46" data-bs-parent="#accordionWallet">
+                            <div class="accordion-body">
+                                <p>
+                                    اگر موجودی کیف پول برای پرداخت مبلغ سفارش کافی نیست، شما تنها باقی مانده مبلغ سفارش را به صورت اینترنتی پرداخت خواهید کرد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-category-item box-shadow" id="app">
+                <h3>اپلیکیشن</h3>
+                <div class="accordion" id="accordionApp">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading47">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse47" aria-expanded="true" aria-controls="collapse47">
+                                چطور می توانم اپلیکیشن بهتاتهویه را دانلود و نصب کنم ؟
+                            </button>
+                        </h2>
+                        <div id="collapse47" class="accordion-collapse collapse" aria-labelledby="heading47" data-bs-parent="#accordionApp">
+                            <div class="accordion-body">
+                                <p>
+                                    می توانید با مراجعه به بخش فوتر (پابرگ) سایت، بر روی پلتفرم هایی که اپلیکیشن بهتاتهویه جهت دانلود و نصب در آنها قرار گرفته کلیک نمایید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading48">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse48" aria-expanded="true" aria-controls="collapse48">
+                                فرآیند ثبت سفارش در اپلیکیشن بهتاتهویه چگونه است ؟
+                            </button>
+                        </h2>
+                        <div id="collapse48" class="accordion-collapse collapse" aria-labelledby="heading48" data-bs-parent="#accordionApp">
+                            <div class="accordion-body">
+                                <p>
+                                    جهت راحتی کاربران در استفاده از اپلیکیشن، هیچ تفاوتی در روند ثبت سفارش میان وبسایت و اپلیکیشن بهتاتهویه وجود ندارد.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section id="faq-contact">
+            <a href="tel:+989105501184">
+                <h6><span>پاسخ را نیافتید ؟</span> با ما تماس بگیرید</h6>
+                <div>
+                    <span dir="ltr">0910 550 1184</span>
+                    <i class="icon icon-phone-call1"></i>
+                </div>
+            </a>
+        </section>
+    </div>
+
+</div>
+
+<div th:remove="tag" th:fragment="script">
+</div>
+
+</body>
+</html>

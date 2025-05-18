@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:remove="tag" th:fragment="style">
+<!--    <meta name="description" content=" بهتاتهویه، فروشگاه آنلاین انواع محصولات تهویه مطبوع    در مشهد مقدس ارزونتر از همه جا و در سریع ترین زمان!">-->
+<!--    <meta name="keywords" content="    ,تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه, بهتاتهویه, فروشگاه اینترنتی بهتاتهویه-->
+<!--    فروشگاه اینترنتی، خرید آنلاین، سوپرمارکت، محصولات تهویه مطبوع، خرید سریع و آسان، بهتاتهویه">-->
+    <style>
+        @media screen and (max-width: 767px) {
+            #footer {
+                display: block !important;
+            }
+        }
+    </style>
+</div>
+
+
+<body>
+
+<div th:remove="tag" th:fragment="content">
+
+    <h1 class="d-bugingg d-none">خانه -  فروشگاه اینترنتی بهتاتهویه </h1>
+    <section id="home-slider">
+
+        <div class="home-section-1">
+            <div class="slider col-8">
+                <div id="home-slider1" class="first_carousel owl-carousel owl-theme" data-ride="carousel" >
+
+                </div>
+            </div>
+            <article class="banners col-4 near-top-slider-pics">
+<!--                <figure><a href="#"><img th:src="@{/assets/images/2.svg}" alt=" 2svg_o"></a></figure>-->
+<!--                <figure><a href="#"><img th:src="@{/assets/images/3.svg}" alt=" 3svg_o"></a></figure>-->
+<!--                <figure><a href="#"><img th:src="@{/assets/images/3.svg}" alt=" 3_svg_2"></a></figure>-->
+            </article>
+        </div>
+    </section>
+    <section id="icon-box">
+        <div th:replace="fragment/homePageFragment.html::content_2"></div>
+    </section>
+
+    <section id="cheaper-campaign">
+        <div class="cheaper-campaign">
+            <div class="cheaper-campaign-header d-flex">
+                <h2 class="col-5">ارزونتر از همه جا!</h2>
+                <div class="offer-countdown">
+                    <div  class="countdown count-down-promote-event" ></div>
+                    <span class="countdown-icon">
+                    <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="50px" height="50px">
+                        <path class="clock-bar" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32,17v15"/>
+                        <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M42,32H32"/>
+                        <path d="M57.3,32C57.3,18.1,45.9,6.8,32,6.8S6.8,18.1,6.8,32S18.1,57.3,32,57.3S57.3,45.9,57.3,32z M32,54.3 c-12.3,0-22.3-10-22.3-22.3S19.8,9.8,32,9.8s22.3,10,22.3,22.3S44.3,54.3,32,54.3z"/><circle cx="32" cy="32" r="3"/>
+                    </svg>
+                </span>
+                </div>
+            </div>
+<!--            To Do Hassan-->
+            <div id="cheaper_product" class="cheaper_product_carousel owl-carousel" data-ride="carousel">
+
+            </div>
+        </div>
+    </section>
+
+    <section id="special-offer">
+        <div class="special-offer">
+            <h2>پیشنهاد ویژه</h2>
+            <div class="offer-countdown">
+                <div class="countdown count-down-promote-special" ></div>
+                <span class="countdown-icon">
+                    <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="50px" height="50px">
+                        <path class="clock-bar" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32,17v15"/>
+                        <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M42,32H32"/>
+                        <path d="M57.3,32C57.3,18.1,45.9,6.8,32,6.8S6.8,18.1,6.8,32S18.1,57.3,32,57.3S57.3,45.9,57.3,32z M32,54.3 c-12.3,0-22.3-10-22.3-22.3S19.8,9.8,32,9.8s22.3,10,22.3,22.3S44.3,54.3,32,54.3z"/><circle cx="32" cy="32" r="3"/>
+                    </svg>
+                </span>
+            </div>
+            <div id="special_product" class="special_product_carousel owl-carousel" data-ride="carousel">
+            </div>
+        </div>
+    </section>
+
+    <section id="bestselling-product">
+        <div class="product-carousel">
+            <h3 class="title">پرفروش ترین محصولات</h3>
+            <div id="top_product" class="top-product-carousel owl-carousel">
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="ads-banner">
+        <div class="ads-banner">
+            <div class="banner-item ">
+                <figure>
+                    <a href="#"><img  th:src="@{/assets/images/air-conditioner-guide-2.jpg}" alt=" بهتاتهویه"></a>
+                </figure>
+            </div>
+            <div class="banner-item ">
+                <figure>
+                    <a href="#"><img  th:src="@{/assets/images/Screenshot 2024-06-11 233311.png}" alt=" Screenshot"></a>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <section id="ads-banner-mobile">
+        <div class="ads-banner-mobile">
+            <div class="banner-item">
+                <figure>
+                    <a href="#"><img th:src="@{/assets/images/air-conditioner-guide-2.jpg}" alt=" banner-item-2"></a>
+                </figure>
+            </div>
+            <div class="banner-item">
+                <figure>
+                    <a href="#"><img th:src="@{/assets/images/Screenshot 2024-06-11 233311.png}" alt=" banner-item"></a>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section id="newest-product">
+        <div class="product-carousel">
+            <h3 class="title">جدیدترین محصولات</h3>
+            <div id="new_product" class=" new-product-carousel owl-carousel" >
+            </div>
+
+        </div>
+    </section>
+
+    <section id="ctg-banner">
+        <div class="ctg-banner main-page-down-pic">
+<!--            <div class="banner-item col-3">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/لبنیات?categoryId=1"><img th:src="@{/assets/images/6.svg}" alt=" لبنیات"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="banner-item col-3">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/روغن?categoryId=1"><img th:src="@{/assets/images/7.svg}" alt=" روغن"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="banner-item col-3">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/شوینده-ضد-عفونی-کننده?categoryId=1"><img th:src="@{/assets/images/8.svg}" alt=" شوینده"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="banner-item col-3">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/تنقلات?categoryId=1"><img th:src="@{/assets/images/30.svg}" alt=" تنقلات"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+        </div>
+    </section>
+    <section id="ctg-banner-mobile">
+        <div class="ctg-banner-mobile main-page-down-pic-mobile">
+<!--            <div class="banner-item col-6 ">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/لبنیات?categoryId=1"><img th:src="@{/assets/images/6.svg}" alt=" images_2"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="banner-item col-6">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/روغن?categoryId=1"><img th:src="@{/assets/images/7.svg}" alt=" images_76"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="banner-item col-6">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/شوینده-ضد-عفونی-کننده?categoryId=1"><img th:src="@{/assets/images/8.svg}" alt=" images_9"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="banner-item col-6">-->
+<!--                <figure>-->
+<!--                    <a href="/productCategory/all/all/تنقلات?categoryId=1"><img th:src="@{/assets/images/30.svg}" alt=" عفونی"></a>-->
+<!--                </figure>-->
+<!--            </div>-->
+        </div>
+    </section>
+
+<!--    <section id="latest-seen">-->
+<!--        <div class="product-carousel">-->
+<!--            <h3 class="title">بازدیدهای اخیر</h3>-->
+<!--            <div id="last-seen" class="owl-carousel last-seen-product-carousel" >-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </section>-->
+</div>
+
+<div th:remove="tag" th:fragment="script">
+    <script th:src="@{/assets/js/pages/homePage/homePage.js}" type="text/javascript"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+
+<div th:remove="tag" th:fragment="logIn">
+
+    <div id="login1Page">
+        <section class="content">
+            <div class="login-form box-shadow">
+                <div class="login-header">
+                    <h6>ورود یا ثبت نام</h6>
+                </div>
+                <div class="login-main">
+                    <span>لطفا شماره تلفن همراه خود را وارد نمایید.</span>
+                    <form action="" id="validation-log-in">
+                        <input class="number_input" type="tel" id="user-phone" name="mobile" placeholder="شماره تلفن همراه" maxlength="11" pattern="[0-9]{11}" title="لطفا شماره همراه معتبر وارد نمایید.">
+
+                        <div class="login-secure">
+                            <figure><img  class="captcha-login" id="secure-image" alt="icon_behta_tahvie_secue"></figure>
+                            <button class="btn-reloadCaptcha" type="button"><img th:src="@{/assets/images/icons/22.svg}" alt="بهتاتهویه"></button>
+                        </div>
+
+                        <input type="text" id="captcha" name="captcha"  class="number_input"
+                               placeholder="اعداد تصویر" maxlength="4" spellcheck="true" title="کد امنیتی وارد شده صحیح ناست.">
+
+                        <input type="submit" class="btn btn-info"  form="validation-log-in" id="login-submit" name="login-submit" value="ورود">
+                    </form>
+                </div>
+                <div class="login-footer">
+                    <p>با ورود و یا ثبت نام در بهتا‌تهویه، شما <a href="/info/termsOfUse" target="_blank">شرایط و قوانین</a> استفاده از
+                        سرویس های سایت بهتا‌تهویه و <a href="/info/privacyPolicy" target="_blank">قوانین حریم خصوصی</a> آن را
+                        می‌پذیرید.</p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<div th:remove="tag" th:fragment="singUp">
+
+    <div id="login3Page">
+        <section class="content sign_up_content">
+            <div class="login-form box-shadow">
+                <div class="login-header">
+                    <a type="button" href="/login"><i class="fa fa-angle-right"></i></a>
+                    <h6>ورود اطلاعات حساب کاربری</h6>
+                </div>
+                <div class="login-main">
+                    <span>با تکمیل اطلاعات زیر ما را در ارائه خدماتی شایسته‌تر یاری کنید.</span>
+                    <form action="" id="validation-sign-up">
+                        <label for="first_name">نام  <span>*</span></label>
+                        <input type="text" id="first_name" name="first_name">
+                        <label for="last_name">نام خانوادگی  <span>*</span></label>
+                        <input type="text" id="last_name" name="last_name">
+                        <label for="nationalCode">کدملی  <span>*</span></label>
+                        <input maxlength="10" minlength="10" type="text" id="nationalCode" class="number_input" name="nationalCode">
+                        <label for="mobile_sign_up">تلفن همراه <span>*</span></label>
+                        <input disabled readonly th:value="${mobile}" type="text" id="mobile_sign_up" class="number_input" name="mobile_sign_up">
+                        <input type="submit" form="validation-sign-up"  class="btn btn-info" id="info-submit" name="info-submit" value="ثبت اطلاعات">
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</div>
+
+<div th:remove="tag" th:fragment="verify">
+
+    <div id="login2Page">
+        <section class="content verify_content">
+            <div class="login-form box-shadow">
+                <div class="login-header">
+                    <button type="button" class="go_back_to" th:data-isfromlogin = "${isFromLogin}"><i class="fa fa-angle-right"  ></i></button>
+                    <h6>ورود کد تأیید</h6>
+                </div>
+                <div class="login-main">
+                    <span>لطفا کد تأیید ارسال شده به شماره <span class="verify_mobile"></span> را وارد نمایید.</span>
+                    <form action="" id="validation-verify">
+                        <input type="tel" id="verifyCode" name="verifyCode" class="number_input verifyCode" placeholder="کد تأیید" maxlength="6" >
+                        <button type="button" id="code-again" name="code-again" class="btnResend" onclick="newCode();">
+                            <i class="fa fa-rotate-right"></i>
+                            ارسال مجدد کد
+                        </button>
+                        <button type="button" id="code-again"  class="resendCodeAgain d-none" onclick="newCode();">
+                            <i class="fa fa-rotate-right"></i>
+                            ارسال مجدد کد
+                        </button>
+
+                        <span id="new-code">ارسال مجدد کد تا <span id="time" class="time">02:00</span> ثانیه دیگر</span>
+                        <input class="btn btn-info login-code-submit-j8" form="validation-verify" id="code-submit" name="code-submit" value="ورود">
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<div th:remove="tag" th:fragment="style">
+    <link rel="stylesheet" th:href="@{/assets/css/new-cart.css}">
+
+    <title>سبد خرید - فروشگاه اینترنتی  بهتاتهویه</title>
+</div>
+
+
+<body id="cartPage">
+
+
+<div th:remove="tag" th:fragment="content">
+
+
+    <div class="content ">
+        <h1 class="title">سبد خرید</h1>
+        <div class="cart-content col-12">
+            <section class="cart-products col-9">
+                <!-- if content is empty ...-->
+
+            </section>
+            <aside class="cart-sidebar col-3">
+                <div class="cart-order box-shadow">
+                    <h6>سفارش شما</h6>
+                    <div class="loading-box">
+                        <img src="/assets/behta_logo/BehtaTahvie.png" alt=" بهتاتهویه">
+                        <div class="loading"></div>
+                    </div>
+                    <div class="order-main prices">
+                        <div class="order-item1">
+                            <span>قیمت کالاها</span>
+                            <span class="order-count"></span>
+                            <span class="order-price"> </span>
+                        </div>
+                        <div class="order-item2">
+                            <span>تخفیف کالاها</span>
+                            <span class="order-percent"></span>
+                            <span class="order-off"></span>
+                        </div>
+                        <div class="order-item3">
+                            <span>جمع سبد خرید</span>
+                            <span class="order-overall"></span>
+                        </div>
+                    </div>
+                    <a
+                            th:href="(${@IsLogin.bool()} ? '/checkOut': '/login' )"
+                            id="shopping" class="btn btn-info shopping" style="display: block" type="button">ادامه فرآیند خرید</a>
+                </div>
+                <div class="cart-offer box-shadow">
+                    <h6 class="cart-offer-title">محصولات پیشنهادی برای شما</h6>
+                    <div id="suggested" class="custom1 owl-carousel" >
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+    <div class="cart-button-mobile box-shadow">
+        <div class="order-item4">
+            <span>مبلغ قابل پرداخت</span>
+            <big class="order-overall"></big>
+        </div>
+        <a th:href="(${@IsLogin.bool()} ? '/checkOut': '/login' )"
+                id="shopping" class="btn btn-info shopping"  type="button">ادامه فرآیند خرید</a>
+    </div>
+
+</div>
+
+
+<div th:remove="tag" th:fragment="script">
+    <script th:src="@{/assets/js/pages/cart/cart.js}" type="text/javascript"></script>
+
+</div>
+
+</body>
+
+</html>

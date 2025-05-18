@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tr="http://www.thymeleaf.org" xmlns:tbody="http://www.thymeleaf.org">
+<div th:fragment="modal" th:remove="tag">
+    <style>
+
+        .send-details select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("../images/20.svg");
+            background-position: 2% center;
+            background-repeat: no-repeat;
+            color: #000000;
+            border: 1px solid #D2D2D2;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 12px;
+            padding: 10px;
+            outline: 0;
+        }
+    </style>
+
+    <div class="address-modal-header modal-header">
+        <h6 class="modal-title" id="addAddressLabel">ثبت تیکت جدید</h6>
+        <span class="modal-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+    </div>
+    <div class="address-modal-body modal-body">
+        <form id="save-ticket-form" action="" >
+            <div class="col-6 send-details">
+                <select class="select2 col-12 select send-day modal_importance " id="send-day" name="importance">
+                    <option th:each=" item : ${imp}" th:text="${item.name}" th:value="${item.id}"></option>
+                </select>
+            </div>
+            <div class="col-6 ">
+                    <input class="form-control  modal_subject rounded-lg "  placeholder="موضوع" name="subject">
+            </div>
+
+            <div class=" col-12">
+                        <textarea placeholder="  متن ..  " name="text" rows="5"
+                                  class="form-control p-2  modal_text rounded-lg"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <div class="address-modal-footer modal-footer">
+        <button type="button" class="address-cancel btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+        <button id="save_ticket_btn" type="button" class="save_ticket_btn btn btn-primary">ارسال</button>
+    </div>
+
+
+</div>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>پرداخت بهتا</title>
+    <meta name="description" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/img/logo.ico}">
+
+
+    <div th:remove="tag" th:fragment="style">
+
+        <link type="text/css" rel="stylesheet" th:href="@{/assets/css/othersPage.css}">
+
+    </div>
+
+</head>
+
+
+<body>
+
+<div th:remove="tag" th:fragment="content">
+
+        <div class="container">
+            <h1 class="d-bugingg d-none">پرداخت بهتا</h1>
+
+            <section class="pay-fail box-shadow d-flex flex-column align-items-center">
+                <img th:src="@{/assets/images/icons/40.svg}" alt=" بهتاتهویه">
+                <h1>خطا در انجام عملیات پرداخت!</h1>
+                <p>
+                    متاسفانه خطایی در انجام تراکنش رخ داد.
+                    <br>
+                    لطفاً پس از گذشت چند دقیقه دوباره امتحان نموده و در صورت بروز مشکل با پشتیبانی تماس حاصل فرمایید.
+                </p>
+<!--                <span>کد پیگیری شما: <span class="order-code">-</span></span>-->
+                <span class="fail-alert">
+                <img th:src="@{/assets/images/icons/19-1.svg}" alt=" بهتاتهویه">
+                درصورت کسر شدن مبلغ از حساب شما، حداکثر تا  ۷۲ ساعت پس از پرداخت مبلغ پرداختی به حساب شما برمی‌گردد.
+            </span>
+                <div class="buttons d-flex justify-content-center">
+                    <a href="/cart" id="back-to-cart" target="_parent">بازگشت به سبد خرید</a>
+                    <a href="/" class="back-to-home" target="_parent">بازگشت به صفحه اصلی</a>
+                </div>
+            </section>
+        </div>
+</div>
+
+
+<div th:fragment="scripts" th:remove="tag">
+
+    <script th:src="@{/assets/select2-develop/dist/js/select2.min.js}"></script>
+    <script th:src="@{/static/assets/oldJs/exit.js}"></script>
+
+
+</div>
+</body>
+</html>
+

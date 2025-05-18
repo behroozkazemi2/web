@@ -1,0 +1,48 @@
+spring:
+
+  session:
+    store-type: redis
+    timeout: -1
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  redis:
+    password: ""
+  profiles:
+    include:
+    - bank
+
+server:
+  port: 7312
+  servlet:
+    context-path: /
+    session:
+      cookie:
+        name: shopbehtatahvie
+        max-age: -1
+
+      timeout: -1
+  tomcat:
+    max-http-form-post-size: 10MB
+api:
+  values:
+    debug-mode: true
+    delay-response: false
+    log-byte-length: 4096
+  server:
+#    auth: http://192.168.1.120:1111/api
+#    imageURl: https://192.168.1.120:1111/thumbnail/web/
+    imageURl: https://api.shop.behtatahvie.com/thumbnail/web/
+#    auth: https://api.shop.behtatahvie.com/api
+    auth: http://localhost:7411/api
+#    auth: http://192.168.43.21:1111/api
+#    auth: http://api.shop.behtatahvie.com/api
+#    imageURl: https://185.211.57.62:1111/thumbnail/web/
+
+apk:
+  link: "https://shop.behtatahvie.com/assets/app/Xima_shop.apk"
+  myket-link: "https://myket.ir/app/ir.mobintabaran.xima.android.customer"
+  cafebazaar-link: "https://cafebazaar.ir/app/ir.mobintabaran.xima.android.customer"
+
+

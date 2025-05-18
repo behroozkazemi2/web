@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="header" th:remove="tag">
+<!--    Main Header-->
+    <header id="header">
+        <div class="upper-header fixed-top" id="upperHeader">
+            <div class="mobile-menu col-2">
+                    <span class="openbtn" data-bs-toggle="offcanvas" href="#mobileMenu" role="button"><i class="icon icon-menu-11"></i></span>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+                        <div class="rm-items">
+                        </div>
+                        <div class="offcanvas-header">
+                            <div class="rm-item-img logo">
+                                <a href="/" title="بهتاتهویه">
+                                    <img th:src="@{/assets/behta_logo/BehtaTahvie.png}"
+                                         style="max-width: 82px;min-width: 82px;min-height: 85px;max-height: 85px;"
+                                         alt="BehtaTahvie.png" title="بهتاتهویه">
+                                </a>
+                            </div>
+                            <div class="rm-item-close pointer">
+                                <i class="bi bi-x"></i>
+                            </div>
+                            <span type="button" class="closebtn" data-bs-dismiss="offcanvas" aria-label="Close">&times;</span>
+                        </div>
+                        <!-- Mobile NavBar-->
+                        <div class="offcanvas-body">
+                            <ul class="rm-item-menu navbar-nav">
+                                <li class="nav-item bg-ul-f7"><a href="/" class="nav-link">صفحه اصلی</a>
+                                </li>
+
+                                <section th:each="ct, iter:${category}" th:remove="tag" >
+                                <li class="nav-item bg-ul-f7">
+
+                                    <i th:classappend="${ct.current.icon} == null ? 'fa fa-list-ul' : ${ct.current.icon}"></i>
+                                    <a
+                                            th:href="'/productCategory/all/all/'+${ct.current.name}+'?categoryId='+${ct.current.id}"
+                                            class="nav-link " th:text="${ct.current.name}" >تهویه</a>
+                                    <span class="showSubMenu"><i th:classappend="${ct.children} == null or ${#lists.size(ct.children)} == 0  ? '' : 'fa fa-chevron-left'" ></i></span>
+                                    <ul class="navbar-nav h-0">
+                                        <li th:if="${ct.children} != null " th:each="child, iter:${ct.children}" class="nav-item">
+                                            <i th:classappend="${child.current.icon} == null ? 'fa fa-list-ul' : ${child.current.icon}"></i>
+                                            <a class="nav-link"
+                                               th:href="'/productCategory/all/all/'+${child.current.name}+'?categoryId='+${child.current.id}"
+                                               th:text="${child.current.name}">کولر</a>
+                                            <span class="showSubMenu"><i  th:classappend="${child.children} == null or ${#lists.size(child.children)} == 0  ? '' : 'fa fa-chevron-left'" ></i></span>
+                                            <ul class="navbar-nav h-0 bg-ul-f7">
+                                                <li  th:if="${child.children} != null " th:each="childTag, iter:${child.children}" class="nav-item">
+                                                    <a th:text="${childTag.current.name}"
+                                                       th:href="'/productCategory/all/all/'+${childTag.current.name}+'?categoryId='+${childTag.current.id}" class="nav-link">۱۰۰۰</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                </section>
+
+                            </ul>
+                        </div>
+                        <!-- Mobile NavBar-->
+
+                    </div>
+            </div>
+            <div class="logo col-3 ">
+                <figure>
+                    <a href="/" title="بهتاتهویه">
+                        <img th:src="@{/assets/behta_logo/BehtaTahvie.png}"  style="max-width: 82px;min-width: 82px;min-height: 85px;max-height: 85px;" alt="BehtaTahvie.png-بهتاتهویه" title="بهتاتهویه">
+                    </a>
+                </figure>
+            </div>
+            <div class="search-box dropdown col-7">
+                <input type="text" id="search-input"
+                       placeholder="به دنبال چه چیزی می گردید؟" class="dropdown-toggle" data-bs-toggle="dropdown"
+                       aria-expanded="false" style="min-height: 41px">
+                <button id="search-btn" type="button">
+                    <img th:src="@{/assets/images/icons/10.svg}" alt="بهتاتهویه-10.svg">
+                </button>
+                <div class="search-suggest-box dropdown-menu overflow-auto" aria-labelledby="search-input">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-icons col-2">
+                <button th:if="!${@IsLogin.bool()}" class="user-signup">
+                    <a href="/login">
+                        <img id="img1-1" th:src="@{/assets/images/icons/1-1.svg}" alt="بهتاتهویه-1-1.svg">
+
+                        <!-- TODO Tag a Link beshe                        -->
+                        <span>ورود / ثبت نام</span>
+                        <!--                    <a href="/UserPanel" th:text="${@FullName.text()}"></a>-->
+                    </a>
+                </button>
+                    <button class="user-login">
+                        <!--icon for Desktop-->
+                        <img id="img1" th:src="@{/assets/images/icons/1.svg}" alt="بهتاتهویه-1.svg">
+                        <!--icon for Mobile-->
+                        <img id="img1-1" th:src="@{/assets/images/icons/1-1.svg}" alt="بهتاتهویه1-1.svg">
+                    </button>
+                    <!--after signup-->
+                    <div th:unless="!${@IsLogin.bool()}" class="user-login-toggle dropdown">
+                        <button id="user-login-menu" class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <img id="img1" th:src="@{/assets/images/icons/1.svg}" alt="svg">
+                        </button>
+                        <div class="user-login-menu dropdown-menu" aria-labelledby="user-login-menu">
+                            <a href="/UserPanel" class="dropdown-item" role="button">پنل کاربری</a>
+                            <a href="/UserPanel?type=5" class="dropdown-item" role="button">سفارش های من</a>
+                            <a href="/logout" class="dropdown-item" role="button" style="color: #FF3B3B;">خروج از حساب کاربری</a>
+                        </div>
+                    </div>
+                <div class="cart-toggle">
+                    <button id="cart-menu" class="cart">
+                        <a href="/cart" class="go_to_cart_page">
+                            <!--Number of Product added to cart-->
+                            <span class="in_cart_product_count"></span>
+                            <img th:src="@{/assets/images/icons/2.svg}" alt="go_to_cart_page_motor">
+                        </a>
+                    </button>
+                    <div class="cart-menu" aria-labelledby="cart-menu">
+                        <div class="cart-menu-header">
+                            <span  class="in_cart_product_count">
+                                <span>کالا</span>
+                            </span>
+                            <a th:href="(${@IsLogin.bool()} ? '/cart': '/login')" class="go_to_cart_page" type="button">
+                                مشاهده سبد خرید
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </div>
+                        <div class="cart-menu-main in_cart_header overflow-auto">
+                            <div class=" mt-2">
+                                <figure><a href="#"><img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt="png"></a></figure>
+                                <div class="cart-menu-content">
+                                    <div class="product-header">
+                                        <h6 class="product-title">پنیر خامه ای ویلی 200 گرمی بیضی کاله</h6>
+                                        <button type="button" id="product-delete"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="add-to-card-number">
+                                            <span id="inc-button" class="inc-button spinner-button"><i
+                                                    class="fa fa-plus"></i></span>
+                                            <input type="number" name="product-number" id="product-number" value="1"
+                                                   min="0" max="100"/>
+                                            <span id="dec-button" class="dec-button spinner-button"><i
+                                                    class="fa fa-minus"></i></span>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">70,000 تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-menu-footer">
+                            <div class="cart-price">
+                                <span>مبلغ قابل پرداخت:</span>
+                                <span id="total_in_cart_price"></span>
+                            </div>
+                            <a  th:href="(${@IsLogin.bool()} ? '/cart': '/login')" id="order-submit" type="button" class="go_to_cart_page btn btn-info">ثبت سفارش</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="lower-header">
+            <div class="main-menu col-9 col-md-10">
+                <div class="top-menu-menu d-lg-flex d-none">
+                    <ul class="navbar-nav">
+                        <li class="position-relative"></li>
+                        <li class="nav-item main-menu-head"><a href="/" class="nav-link border-animate fromCenter fw-bold"><i
+                                class="fa fa-home " style="vertical-align: middle!important;  padding-left: 3px;"></i> صفحه‌اصلی</a>
+                        </li>
+                        <li class="nav-item main-menu-head"><a href="#" class="nav-link border-animate fromCenter fw-bold"><i
+                                class="fa fa-list-ul " style="vertical-align: middle!important;  padding-left: 3px;"></i> دسته بندی کالاها</a>
+                            <ul class="main-menu top-parent-category"  style="align-items: flex-end;min-height: 300px">
+                                <li  th:if="${category} != null" th:each="cat, iter:${category}">
+                                    <a th:href="'/productCategory/all/all/'+${cat.current.name}+'?categoryId='+${cat.current.id}">
+                                        <i th:classappend="${cat.current.icon} == null ? '' : ${cat.current.icon}" style="vertical-align: middle!important;  padding-left: 2px;"></i>
+                                    [[${cat.current.name}]]</a>
+                                    <ul class="main-menu-sub back-menu">
+                                        <section th:each="ct, iter:${cat.children}" th:remove="tag" >
+                                            <li class="col-2">
+                                                <a class="child title my-flex-baseline"
+                                                   th:href="'/productCategory/all/all/'+${ct.current.name}+'?categoryId='+${ct.current.id}">
+                                                    <i th:classappend="${ct.current.icon} == null ? ' ac_svg ' : ${ct .current.icon}"  style="vertical-align: middle!important;  padding-left: 2px;"></i>
+<!--                                                    <i th:classappend="${ct.current.icon} == null ? 'fa fa-list-ul ' : ${ct .current.icon}" style="vertical-align: middle!important;  padding-left: 2px;"></i>-->
+                                                    [[${ct.current.name}]]
+                                                </a>
+                                            </li>
+
+                                            <li class="col-2" th:if="${ct.children} != null " th:each="ctt, iter:${ct.children}">
+                                                <a class="no_child text-muted  "  th:href="'/productCategory/all/all/'+${ctt.current.name}+'?categoryId='+${ctt.current.id}">
+                                                    <i class="fa fa-angle-left small " style="vertical-align: middle!important;  padding-left: 2px;"></i>
+                                                    [[${ctt.current.name}]]
+                                                </a>
+                                            </li>
+                                        </section>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+             </div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="به دنبال چه چیزی می گردید؟">
+                <button id="search-btn" type="button" style="cursor: pointer">
+                    <img th:src="@{/assets/images/icons/10.svg}" alt="10svg" style="cursor: pointer">
+
+                </button>
+            </div>
+            <div class="location col-3 col-md-2 dropdown" >
+                <button class="address dropdown-toggle" type="button" id="dropDownAddress" data-bs-toggle="dropdown" aria-expanded="false" th:classappend="(${@IsLogin.bool()} ? '': 'show_toast-not_login')">
+                    <img th:src="@{/assets/images/icons/9.svg}" alt="9.svg}">
+
+                    <span class="address-content" id="session_address">
+                        <h6>موقعیت شما:</h6>
+                        <span></span>
+                        <a  href="/UserPanel"> افزودن آدرس جدید</a>
+                    </span>
+                </button>
+                <ul class="address-menu dropdown-menu address_drop_down_list row" aria-labelledby="dropDownAddress">
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+<!--    LogIn Header-->
+    <header id="loginHeader">
+        <div class="logo">
+            <figure>
+                <a href="/" title="بهتاتهویه">
+                    <img th:src="@{/assets/behta_logo/BehtaTahvie.png}"  height="auto" width="auto"  alt="behta_logo" title="بهتاتهویه">
+                </a>
+            </figure>
+        </div>
+    </header>
+
+
+</div>
+
+</body>
+</html>

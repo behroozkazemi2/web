@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <title>پرداخت بهتا</title>
+
+    <div th:remove="tag" th:fragment="style">
+
+        <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+        <!--owl carousel min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/owl.carousel.min.css}">
+        <!--slick min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/slick.css}">
+        <!--magnific popup min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">
+        <!--font awesome css-->
+        <link rel="stylesheet" th:href="@{/assets/css/font.awesome.css}">
+        <!--ionicons css-->
+        <link rel="stylesheet" th:href="@{/assets/css/ionicons.min.css}">
+        <!--linearicons css-->
+        <link rel="stylesheet" th:href="@{/assets/css/linearicons.css}">
+        <!--animate css-->
+        <link rel="stylesheet" th:href="@{/assets/css/animate.css}">
+        <!--jquery ui min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/jquery-ui.min.css}">
+        <!--slinky menu css-->
+<!--        <link rel="stylesheet" th:href="@{/assets/css/slinky.menu.css}">-->
+        <!--plugins css-->
+        <link rel="stylesheet" th:href="@{/assets/css/plugins.css}">
+
+        <link rel="stylesheet" th:href="@{/assets/css/toast.css}">
+
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+
+        <!--modernizr min js here-->
+        <script th:src="@{/static/assets/oldJs/vendor/modernizr-3.7.1.min.js}"></script>
+    </div>
+
+
+</head>
+
+<body>
+
+
+    <div class="row justify-content-center mt-5" style="font-size: 25px">در حال انتقال به درگاه پرداخت</div>
+    <p class="text-center" style="    font-size: 20px;
+    margin-top: 20px;"> لطفا شکیبا باشید...</p>
+<!--    <form style="display: none" id="pay-form" action="https://pna.shaparak.ir/_ipgw_//payment/" method="post">-->
+<!--        <input type="text" name="token" th:value="${token}"/>-->
+<!--        <input type="text" name="language" value="fa"/>-->
+<!--    </form>-->
+
+<!--    <script type="application/javascript">-->
+<!--        // document.getElementById("pay-form").submit();-->
+<!--    </script>-->
+
+    <div>
+
+        <div class="row justify-content-center">
+            <p class="text-center text-success" th:if="${success}">خرید با موفقیت انجام شد. با تشکر از حسن انتخاب
+                شما</p>
+        </div>
+
+    </div>
+
+
+    <div th:fragment="scripts" th:remove="tag">
+
+        <script th:src="@{/assets/select2-develop/dist/js/select2.min.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/DataTables/datatables.js}"></script>
+        <script th:src="@{/static/assets/oldJs/exit.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/showImageModal.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/starRate.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/addToCart.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/cutWord/shortWord.js}"></script>
+        <script th:src="@{/static/assets/oldJs/pages/shop/shop.js}"></script>
+
+    </div>
+</body>
+</html>
+

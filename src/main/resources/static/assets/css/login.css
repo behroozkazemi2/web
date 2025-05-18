@@ -1,0 +1,221 @@
+/*-------------- Login 1 Page --------------*/
+body {
+    color: #1C1C28;
+    display: flex;
+    flex-direction: column;
+//justify-content: space-between;
+    min-height: 100vh;
+}
+
+.log_in_content {
+    flex: 1;
+}
+
+#login1Page,
+#login2Page,
+#login3Page {
+//min-height: 400px;
+}
+
+#header {
+    display: none;
+}
+
+#loginHeader {
+    display: block;
+}
+
+.content {
+    padding: 40px 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 430px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #D3D3D3;
+    padding-top: 10px;
+}
+
+.login-header h6 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+}
+
+.login-main {
+    padding: 10px 20px;
+}
+
+.login-main .error {
+    font-size: 12px;
+    color: #FF3B3B;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-main span {
+    color: #1C1C28;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.login-main input {
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    color: #979797;
+    outline: 0;
+    font-size: 14px;
+    margin: 15px 0;
+    width: 100%;
+    padding: 10px;
+    text-indent: 5px;
+}
+.login-main .login-code-submit-j8,
+.login-main input[type=submit],
+.login-main input[type=button] {
+    font-size: 16px;
+    color: #fff;
+    background: var(--main-color);
+    border-radius: 6px;
+    border: 0;
+    outline: 0;
+    padding: 10px;
+}
+
+.login-main #secure-image {
+    width: 300px;
+}
+
+#login-form {
+    margin-top: 10px;
+}
+
+.login-secure .btn-reloadCaptcha {
+    padding: 10px 30px;
+    background: #EBF7FF;
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+}
+
+.login-main .login-secure {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.login-main input[type=submit]:hover,
+.login-code-submit-j8:hover,
+.login-main input[type=button]:hover {
+    color: #fff;
+    background-color: #35a7dc;
+}
+
+.login-footer p {
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+
+#footer {
+    display: none;
+}
+
+#loginFooter {
+    padding: 10px 100px;
+    display: flex;
+    justify-content: space-between;
+    background: #F0F0F0;
+}
+
+#loginFooter p {
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/*-------------- Login 2 Page --------------*/
+#login2Page .login-header {
+    justify-content: flex-start;
+}
+
+.login-header button {
+    flex: .4;
+    margin-right: 50px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    text-align: right;
+}
+
+.login-header button i {
+    font-size: 22px;
+}
+
+.login-main #code-again {
+    font-size: 14px;
+    background: transparent;
+    color: #457B9D;
+    float: left;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+.login-main #code-again i {
+    margin-left: 5px;
+}
+
+.login-main form #new-code {
+    display: none;
+    float: left;
+}
+
+.login-main form span {
+    color: #457B9D;
+    font-size: 14px;
+}
+
+
+/*-------------- Login 3 Page --------------*/
+#login3Page .login-header {
+    justify-content: flex-start;
+}
+
+#login3Page .login-header a {
+    margin-right: 40px;
+    color: #000;
+    flex: .4;
+    text-align: right;
+}
+
+#login3Page form {
+    margin-top: 10px;
+}
+
+#login3Page .login-header a i {
+    font-size: 22px;
+}
+
+#login-form label {
+    font-size: 14px;
+    color: #6C6C6C;
+}
+
+#login-form label span {
+    color: inherit;
+}
+

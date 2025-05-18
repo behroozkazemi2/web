@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:remove="tag" th:fragment="style">
+
+    <link th:href="@{/assets/css/lib/slider/nouislider.min.css}" type="text/css">
+    <link type="text/css" rel="stylesheet" th:href="@{/assets/css/othersPage.css}">
+    <meta name="keywords" content="تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه,  بهتاتهویه, فروشگاه اینترنتی بهتاتهویه">
+    <meta name="description" th:content=" 'خرید انواع ' + ${categoryDetail.name} + ' با برترین برندها و بالاترین کیفیت در  بهتاتهویه ارزونتر از همه جا!'">
+    <title>خرید انواع [[${categoryDetail.name}]] - فروشگاه اینترنتی  بهتاتهویه </title>
+
+    <style>
+        .no-bullets {
+            list-style-type: none;
+        }
+
+        aside nav.left-nav ul {
+            margin-left: 0;
+            padding-left: 0
+        }
+        aside nav.left-nav ul li {
+            border-bottom: 2px solid #fff;
+            font-size: 1.75rem
+        }
+        .image-container {
+            background: #000 !important;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        aside nav.left-nav ul li.nolistHighlight {
+            background-color: #457b9da1;
+            color: #fff;
+            text-decoration: none
+        }
+        aside nav.left-nav ul li.nolistHighlight a {
+            color: #fff
+        }
+
+        aside nav.left-nav ul li.nolistsubHighlight {
+            background-color: #457b9da1;
+            color: #fff;
+            text-decoration: none
+        }
+        aside nav.left-nav ul li.nolistsubHighlight a {
+            color: #fff
+        }
+        aside nav.left-nav ul li a {
+            color: #010100;
+            font-weight: 400;
+            display: block;
+            padding: 1.6rem;
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+        }
+        aside nav.left-nav ul li a:hover {
+            color: #010100;
+            background-color: #457b9da1;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+        aside nav.left-nav ul li ul {
+            display: none;
+            background-color: #f3f3f5
+        }
+        aside nav.left-nav ul li ul li a {
+            font-size: 1.25rem;
+            font-weight: 300;
+            padding-left: 2.5rem
+        }
+        aside nav.left-nav ul li ul li a.active {
+            min-height: 80px !important;
+            background-color: initial;
+            color: #457b9da1;
+            padding-bottom: initial
+        }
+        aside nav.left-nav ul li ul li a:hover {
+            color: #010100;
+            background-color: #457b9da1;
+
+        }
+    </style>
+
+</div>
+
+<body id="categoryPage">
+
+<div th:remove="tag" th:fragment="content">
+
+    <input hidden id="categoryId" th:value="${categoryId}">
+    <input hidden id="categoryName" th:value="${categoryName}">
+    <input hidden id="brandId" th:value="${searchedBrand}">
+    <input hidden id="tagId" th:value="${searchedTag}">
+    <input hidden id="brandName" th:value="${searchedBrandName}">
+    <input hidden id="tagName" th:value="${searchedTagName}">
+    <input hidden id="searchString" th:value="${searchString}">
+
+    <div class="ctg-buttons-mobile">
+        <div class="ctg-filter">
+            <div id="ctg-filter" class="sideFilter">
+                <div class="sideFilter-header">
+                    <span>جستجوی پیشرفته</span>
+                    <span class="closebtn" onclick="closeFilter()">&times;</span>
+                </div>
+                <div class="ctg-section border">
+                    <h3 class="title">دسته بندی نتایج</h3>
+                    <aside class="col-xs-12 col-md-12 col-lg-12 side-menu">
+                        <nav class="left-nav hidden-xs hidden-sm hidden-md">
+                            <ul class="nolist border" style="border-radius: 20px">
+                                <section th:each="parent : ${filteredCategory}" th:remove="tag">
+                                    <li class="first_parent no-bullets border-bottom">
+                                        <a
+                                           class="isParent"
+                                           th:data-id="${parent.current.id}"
+                                           th:data-name="${parent.current.name}">
+                                            [[${parent.current.name}]]
+                                            <i class="fa fa-plus small" style="float: inline-end"></i>
+                                        </a>
+                                        <ul class="nolist no-bullets">
+                                            <section th:each="sub1 : ${parent.children}" th:remove="tag">
+                                                <li class="no-bullets border border-bottom"
+                                                    th:classappend="${sub1.children} == null ? 'hasNochild' : ''">
+                                                    <a
+                                                       class="isParent"
+                                                       th:data-id="${sub1.current.id}"
+                                                       th:data-name="${sub1.current.name}"
+                                                       th:data-image-id="${sub1.current.imageId}"
+                                                       th:data-desc="${sub1.current.description}"><label class="px-2">
+                                                        <input type="checkbox" class="hasCheckBox"
+                                                               th:checked="${sub1.current.id} == ${categoryId}"
+                                                               th:data-id="${sub1.current.id}"
+                                                               th:data-name="${sub1.current.name}"
+                                                               th:data-image-id="${sub1.current.imageId}"
+                                                               th:data-desc="${sub1.current.description}"
+                                                               th:remove="${sub1.children} == null ? 'none' : 'tag'">
+                                                    </label>[[${sub1.current.name}]]
+                                                        <section th:remove="tag" th:if=" ${sub1.children} !=null ">
+                                                            <i class="fa fa-plus small" style="float: inline-end"></i>
+                                                        </section>
+                                                    </a>
+                                                    <ul class="nolistsub no-bullets">
+                                                        <section th:each="sub2 : ${sub1.children}" th:remove="tag">
+                                                            <li class="no-bullets border border-bottom px-4"
+                                                                th:classappend="${sub2.children} == null ? 'hasNochild' : ''">
+                                                                <a
+
+                                                                        class="isParent"
+                                                                        th:data-id="${sub2.current.id}"
+                                                                   th:data-name="${sub2.current.name}"
+                                                                   th:data-image-id="${sub2.current.imageId}"
+                                                                   th:data-desc="${sub2.current.description}"><label class="px-2">
+                                                                    <input type="checkbox" class="hasCheckBox"
+                                                                           th:checked="${sub2.current.id} == ${categoryId}"
+                                                                           th:data-id="${sub2.current.id}"
+                                                                           th:data-name="${sub2.current.name}"
+                                                                           th:data-image-id="${sub2.current.imageId}"
+                                                                           th:data-desc="${sub2.current.description}"
+                                                                           th:remove="${sub2.children} == null ? 'none' : 'tag'">
+                                                                </label>[[${sub2.current.name}]]
+                                                                    <section th:remove="tag" th:if=" ${sub2.children} !=null ">
+                                                                        <i class="fa fa-plus small" style="float: inline-end"></i>
+                                                                    </section>
+                                                                </a>
+                                                            </li>
+                                                        </section>
+
+                                                    </ul>
+
+                                                </li>
+                                            </section>
+
+                                        </ul>
+                                    </li>
+
+                                </section>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <h3 class="title">فیلتر</h3>
+
+                    <h6 th:if="${searchedBrand == 0}" >برند</h6>
+                    <form class="filter-brands" th:if="${searchedBrand == 0}">
+                        <input type="search" class="filter-search" id="filter-search" name="filter-search" placeholder="جستجو...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <div class="filter-checkbox overflow-auto">
+                        </div>
+                    </form>
+                    <div class="existed-switch">
+                        <span>فقط کالاهای موجود</span>
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                            <input class="available-product" id="available-product" type="checkbox">
+                            <span class="slider-checkbox round"></span>
+                        </label>
+                    </div>
+                    <div class="filter-price">
+                        <span>محدوده قیمت</span>
+                        <div class="prices">
+                            <span class="input-price col-5"><span>از</span><input class="firstPrice" type="text" placeholder="0" value="0" id="first-price"><small>تومان</small></span>
+                            <span class="input-price col-6"><span>از</span><input class="lastPrice" type="text" placeholder="90,000,000" value="90000000" id="last-price"><small>تومان</small></span>
+                        </div>
+                        <div id="slider" style="  direction:rtl !important; "></div>
+                    </div>
+                    <div class="filter-submit">
+                        <button href="#pic_carosul" id="submit-filters"  style="text-align-last:center" class="filter submit-filters" type="submit" onclick="closeFilter()">اعمال فیلتر</button>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="openbtn" onclick="openFilter()">
+                <img th:src="@{/assets/images/icons/14.svg}" alt=" بهتاتهویه">
+                جستجوی پیشرفته
+            </button>
+        </div>
+        <div class="ctg-sort">
+            <div id="ctg-sort" class="sideSort">
+                <div class="ctg-sort-box box-shadow">
+                    <div class="ctg-sort-header">
+                        <span>مرتب سازی براساس:</span>
+
+                        <span class="closebtn" onclick="closeSort()">&times;</span>
+                    </div>
+                    <div class="sort-content">
+                        <button data-value="5" type="button" class="sort-btn active" onclick="closeSort()">جدیدترین</button>
+                        <button data-value="1" type="button" class="sort-btn" onclick="closeSort()">گران ترین</button>
+                        <button data-value="2" type="button" class="sort-btn" onclick="closeSort()">ارزان ترین</button>
+                        <button data-value="6" type="button" class="sort-btn" onclick="closeSort()">محبوب ترین</button>
+<!--                        <button  type="button" class="sort-btn">پرفروش ترین</button>-->
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="openbtn" onclick="openSort()"><i class="fa fa-sort-amount-desc"></i>
+                مرتب سازی
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 class="d-bugingg d-none">[[${categoryDetail.name}]]</h1>
+
+        <section id="banner">
+            <div class="banner">
+                <div  id="pic_carosul" class="banner-item">
+                    <figure>
+                        <a  href="#">
+                            <img class="category_image_id" style="max-width: 1720px; max-height: 290px;" th:if="${categoryDetail.id} != 0" th:data="${categoryDetail.id}" th:src="'/thumbnail/files/0/'+ ${categoryDetail.id}" th:alt="${categoryDetail.name}"></a>
+                            <img class="category_image_id" th:unless="${categoryDetail.id} != 0" th:src="@{/assets/images/air-conditioner-guide-5.jpg}" th:alt="${categoryDetail.name}"></a>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="ctg-content">
+            <aside class="ctg-sidebar col-4">
+                <div class="ctg-section border">
+                    <div class="filter-control">
+                        <h3 class="title">فیلترهای اعمال شده</h3>
+                        <button id="remove-all" class="remove-filter" type="button">حذف همه</button>
+                    </div>
+                    <div class="alert alert-dismissible fade show filters_holder">
+                    </div>
+                </div>
+
+                <div class="ctg-section border">
+                    <h3 class="title">دسته بندی نتایج</h3>
+                    <aside class="col-xs-12 col-md-12 col-lg-12 side-menu">
+                        <nav class="left-nav hidden-xs hidden-sm hidden-md">
+                            <ul class="nolist border" style="border-radius: 20px">
+                                <section th:each="parent : ${filteredCategory}" th:remove="tag">
+                                    <li class="first_parent no-bullets border-bottom">
+                                        <a
+
+                                           class="isParent"
+                                                th:data-id="${parent.current.id}"
+                                           th:data-name="${parent.current.name}">
+                                            [[${parent.current.name}]]
+                                            <i class="fa fa-plus small" style=" float: inline-end"></i>
+                                        </a>
+                                        <ul class="nolist no-bullets">
+                                            <section th:each="sub1 : ${parent.children}" th:remove="tag">
+                                                <li class="no-bullets border border-bottom"
+                                                 th:classappend="${sub1.children} == null ? 'hasNochild' : ''">
+                                                    <a
+
+                                                            th:data-id="${sub1.current.id}"
+                                                       th:data-name="${sub1.current.name}"
+                                                       th:data-image-id="${sub1.current.imageId}"
+                                                       class="isParent"
+                                                       th:data-desc="${sub1.current.description}"><label class="px-2">
+                                                        <input type="checkbox" class="hasCheckBox"
+                                                               th:checked="${sub1.current.id} == ${categoryId}"
+                                                               th:data-id="${sub1.current.id}"
+                                                               th:data-name="${sub1.current.name}"
+                                                               th:data-image-id="${sub1.current.imageId}"
+                                                               th:data-desc="${sub1.current.description}"
+                                                               th:remove="${sub1.children} == null ? 'none' : 'tag'">
+                                                    </label>[[${sub1.current.name}]]
+                                                    <section th:remove="tag" th:if=" ${sub1.children} !=null ">
+                                                        <i class="fa fa-plus small" style="float: inline-end"></i>
+                                                    </section>
+                                                    </a>
+                                                    <ul class="nolistsub no-bullets">
+                                                        <section th:each="sub2 : ${sub1.children}" th:remove="tag">
+                                                            <li class="no-bullets border border-bottom px-4"
+                                                                th:classappend="${sub2.children} == null ? 'hasNochild' : ''">
+                                                                <a
+                                                                   class="isParent"
+                                                                   th:data-id="${sub2.current.id}"
+                                                                   th:data-name="${sub2.current.name}"
+                                                                   th:data-image-id="${sub2.current.imageId}"
+                                                                   th:data-desc="${sub2.current.description}"><label class="px-2">
+                                                                    <input type="checkbox" class="hasCheckBox"
+                                                                           th:checked="${sub2.current.id} == ${categoryId}"
+                                                                           th:data-id="${sub2.current.id}"
+                                                                           th:data-name="${sub2.current.name}"
+                                                                           th:data-image-id="${sub2.current.imageId}"
+                                                                           th:data-desc="${sub2.current.description}"
+                                                                           th:remove="${sub2.children} == null ? 'none' : 'tag'">
+                                                                </label>[[${sub2.current.name}]]
+                                                                    <section th:remove="tag" th:if=" ${sub2.children} !=null ">
+                                                                        <i class="fa fa-plus small" style="float: inline-end"></i>
+                                                                    </section>
+                                                                </a>
+                                                            </li>
+                                                        </section>
+
+                                                    </ul>
+
+                                                </li>
+                                            </section>
+
+                                        </ul>
+                                    </li>
+
+                                </section>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                     <h3 class="title">فیلتر</h3>
+                    <h6 th:if="${searchedBrand == 0}" >برند</h6>
+                    <form class="filter-brands mt-2" th:if="${searchedBrand == 0}">
+                        <input type="search" class="filter-search" id="filter-search" name="filter-search" placeholder="جستجو...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <div class="filter-checkbox  filter-checkbox_web_size overflow-auto">
+                        <div class="filter-checkbox overflow-auto">
+                        </div>
+                        </div>
+                    </form>
+                    <div class="existed-switch">
+                        <span>فقط کالاهای موجود</span>
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                            <input class="available-product" id="available-product" type="checkbox">
+                            <span class="slider-checkbox round"></span>
+                        </label>
+                    </div>
+                    <div class="filter-price">
+                        <span>محدوده قیمت</span>
+                        <div class="prices">
+                            <span class="input-price col-5"><span>از</span><input class="firstPrice" type="text" placeholder="0" value="10"
+                                                                                  id="first-price"><small>تومان</small></span>
+                            <span class="input-price col-6"><span>از</span><input class="lastPrice" type="text" placeholder="90,000,000" value="90000000" id="last-price"><small>تومان</small></span>
+                        </div>
+                        <div id="slider" style="  direction:rtl !important; "></div>
+                    </div>
+                    <div class="filter-submit">
+                        <button href="#pic_carosul" id="submit-filters" style="text-align-last:center" class="filter submit-filters" type="button" >اعمال فیلتر</button>
+                    </div>
+
+                </div>
+            </aside>
+            <section class="ctg-main col-8">
+                <div class="ctg-section border">
+                    <h3 class="sort-title">مرتب سازی براساس:</h3>
+                    <div class="sort-content">
+
+                        <button data-value="5" type="button" class="sort-btn active">جدیدترین</button>
+                        <button data-value="1" type="button" class="sort-btn">گران ترین</button>
+                        <button data-value="2" type="button" class="sort-btn">ارزان ترین</button>
+                        <button data-value="6" type="button" class="sort-btn">محبوب ترین</button>
+<!--                        <button data-value="6" type="button" class="sort-btn">پرفروش ترین</button>-->
+                    </div>
+                </div>
+                <div id="ctg-product">
+                    <div class="ctg-product">
+                        <div class="product-box">
+                        </div>
+                        <div class="loading-box">
+                            <img src="/assets/behta_logo/BehtaTahvie.png" alt=" بهتاتهویه">
+                            <div class="loading"></div>
+                        </div>
+
+                        <!-- if content is empty ...-->
+
+                    </div>
+                </div>
+                <div id="pagination">
+                    <ul class="pagination">
+                    </ul>
+                </div>
+                <div class="ctg-section border mt-3">
+                    <div id="ctg-desc">
+                        <h3 class="title ctg-name">دسته بندی [[${categoryDetail.name}]]</h3>
+                        <p class="category_description">[[${categoryDetail.value}]]</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div th:remove="tag" th:fragment="script">
+    <script>
+        $('.first_parent').on('click', 'a', function(e){
+            if ($(this).parent().children('ul').length){
+                e.preventDefault();
+                $(this).addClass('active');
+                $(this).parent().children('ul').slideDown();
+
+            }
+        });
+
+        $('.first_parent').on('click', 'a.active', function(e){
+            console.log($(this));
+            e.preventDefault();
+            $(this).removeClass('active');
+            $(this).parent().children('ul').slideUp();
+        });
+
+
+    </script>
+
+
+    <script th:src="@{/assets/js/lib/slider/nouislider.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/pages/productCategory/productCategory.js}" type="text/javascript"></script>
+</div>
+
+
+</body>
+
+
+</html>

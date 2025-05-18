@@ -1,0 +1,683 @@
+/*------- Privacy Policy Page --------- */
+.content .title {
+    display: inline-block;
+}
+
+.content h1 {
+    font-size: 20px;
+}
+
+.content p {
+    margin-left: 50px;
+    line-height: 30px;
+}
+
+.content .box-shadow {
+    padding: 10px 20px;
+}
+
+
+/*--------- Terms of Use Page ------- */
+.content h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.content h5 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.content h6 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.content nav ol {
+    font-size: 14px;
+    padding-right: 2rem;
+}
+
+.content nav ol li {
+    line-height: 25px;
+}
+
+
+/*--------- Contact Us Page ------- */
+.contact {
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.contact p {
+    color: #6C6C6C;
+    font-size: 14px;
+}
+
+.contact p img {
+    margin-left: 10px;
+}
+
+.contact-icons,
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 50px 50px;
+}
+
+.contact-icons article,
+.social-icons article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 20px 30px rgba(0,0,0,.16);
+    transition: all .3s ease-in-out;
+}
+
+.contact-icons article:hover,
+.social-icons article:hover {
+    transform: scale(1.1);
+}
+
+.contact-icons article i,
+.social-icons article i {
+    color: var(--main-color);
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-icons article h6,
+.social-icons article h6 {
+    font-weight: normal;
+}
+
+.contact-icons article span {
+    margin-left: 0 !important;
+}
+
+.contact-icons article a {
+    color: var(--main-color);
+    margin-top: 10px;
+}
+
+.social-icons article a {
+    color: var(--main-color);
+    margin-top: 10px;
+    font-family: sans-serif !important;
+    direction: ltr;
+}
+
+
+/*--------- FAQ Page ---------- */
+#faq-header {
+    padding: 15px;
+}
+
+#faq-header p {
+    font-size: 14px;
+}
+
+#faq-header .faq-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 50px;
+}
+
+#faq-header .faq-category .faq-category-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    min-width: 280px;
+    box-shadow: 0 20px 30px rgba(0,0,0,.16);
+    border-radius: 8px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+#faq-header .faq-category .faq-category-icon:hover {
+    transform: scale(1.1);
+}
+
+#faq-header .faq-category .faq-category-icon i {
+    font-size: 46px;
+    margin-bottom: 30px;
+    color: var(--main-color);
+}
+
+#faq-header .faq-category .faq-category-icon span {
+    font-size: 18px;
+    color: #212529;
+}
+
+#faq-main {
+    margin: 20px 0;
+}
+
+#faq-main .faq-category-item {
+    padding: 20px;
+}
+
+#faq-main .faq-category-item:not(div:last-child) {
+    margin-bottom: 20px;
+}
+
+#faq-main .faq-category-item h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--main-color);
+}
+
+#faq-main .faq-category-item .accordion {
+    margin: 0 100px;
+}
+
+#faq-main .faq-category-item .accordion-item {
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+}
+
+#faq-main .faq-category-item .accordion-button::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+#faq-main .faq-category-item .accordion-button {
+    text-align: right;
+    line-height: 25px;
+}
+
+#faq-main .faq-category-item .accordion-button:not(.collapsed) {
+    box-shadow: none;
+    color: #457B9D;
+    background-color: #EBF7FF;
+}
+
+#faq-main .faq-category-item .accordion-button:focus {
+    box-shadow: none;
+    border: none;
+}
+
+#faq-main .faq-category-item .accordion-body p {
+    color: #707070;
+}
+
+#faq-contact {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#faq-contact a {
+    padding: 15px;
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+}
+
+#faq-contact h6 {
+    font-size: 18px;
+    font-weight: lighter;
+    color: #212529;
+    margin-bottom: 20px;
+}
+
+#faq-contact h6 span {
+    color: var(--main-color);
+}
+
+#faq-contact div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#faq-contact div span {
+    font-size: 20px;
+    color: #212529;
+}
+
+#faq-contact i {
+    font-size: 40px;
+    color: var(--main-color);
+    margin-right: 10px;
+}
+
+
+/*--------- About Us Page ---------- */
+.about p {
+    margin: 0;
+    padding: 20px 0;
+    color: #4A4A4A;
+}
+
+.about-section {
+    margin: 0 20px 20px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.about-section .footer-social {
+    padding: 20px 0;
+}
+
+.about-section ul {
+    padding-right: 2rem;
+}
+
+.about-section ul li {
+    margin-bottom: 10px;
+    color: #4A4A4A;
+    font-weight: bold;
+}
+
+.about-section .double-buttons {
+    padding: 20px 0;
+}
+
+.double-buttons a {
+    padding: 10px 30px;
+    border-radius: 30px;
+    transition: all .2s ease;
+}
+
+.double-buttons a:hover {
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+
+.double-buttons #faq {
+    color: #FF8800;
+    border: 1px solid #FF8800;
+    margin-left: 20px;
+}
+
+.double-buttons #faq:hover img {
+    color: #fff;
+}
+
+.double-buttons #faq img {
+    width: 28px;
+    margin-left: 10px;
+}
+
+.double-buttons #contact {
+    color: #06C270;
+    border: 1px solid #06C270;
+}
+
+.double-buttons #contact img {
+    width: 22px;
+    margin-left: 10px;
+}
+
+
+/*--------- Payment Back Page ---------- */
+.pay-success,
+.pay-fail {
+    padding: 30px !important;
+    height: 80vh;
+}
+
+.pay-success img,
+.pay-fail img {
+    width: 70px;
+    margin-bottom: 30px;
+}
+
+.pay-success h1,
+.pay-fail h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.pay-success h1 {
+    color: #06C270;
+}
+
+.pay-fail h1 {
+    color: #FF3B3B;
+}
+
+.pay-success p,
+.pay-fail p {
+    font-size: 14px;
+    text-align: center;
+    margin: 0 0 30px !important;
+}
+
+.pay-success span,
+.pay-fail span {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.pay-fail .fail-alert {
+    display: flex;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 10px 20px;
+    color: #FE9500;
+    margin: 20px auto 0;
+    border-radius: 6px;
+    background-color: #FFE6C2;
+}
+
+.pay-fail .fail-alert img {
+    width: 20px;
+    margin: 0 0 0 10px;
+}
+
+.buttons {
+    margin: 50px auto;
+}
+
+.buttons a {
+    padding: 10px 30px;
+    border-radius: 6px;
+    transition: all .2s ease;
+}
+
+.buttons a:hover {
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+
+.pay-success .buttons #view-order,
+.pay-fail .buttons #back-to-cart {
+    color: #fff;
+    background-color: #457B9D;
+    margin-left: 20px;
+}
+
+.buttons #view-factor {
+    color: #4A4A4A;
+    background-color: #F3F6F9;
+}
+
+
+/*--------- Order Factor Page ---------- */
+#order-factor {
+    padding: 20px 100px;
+    width: 100%;
+}
+
+#order-factor-table1 {
+    width: 100%;
+}
+
+#order-factor-table1, th, td {
+    border: 1px solid #212529;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
+
+
+#order-factor-table1 h1 {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+#order-factor-table1 span {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#order-factor-table1 h3 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#order-factor-table1 h6 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+#order-factor-table1 figure {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#order-factor-table1 img {
+    width: 100px;
+    padding: 10px;
+}
+
+.factor-title {
+    width: 100%;
+    text-align: center;
+    background-color: var(--main-color);
+    padding: 5px;
+}
+
+.factor-title h3 {
+    color: #fff;
+    margin: 0;
+}
+
+#order-factor-table1 td span {
+    border-left: none;
+}
+
+#order-factor-table2 {
+    width: 100%;
+}
+
+#order-factor-table2 th,
+#order-factor-table2 td {
+    text-align: center;
+}
+
+#order-factor-table2 span {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+#save-to-pdf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    padding: 10px 30px;
+    margin: 20px auto;
+    background-color: var(--main-color);
+}
+
+#save-to-pdf i {
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*--------- Responsive ---------- */
+@media screen and (max-width: 767px) {
+    .content h1 {
+        font-size: 16px;
+    }
+
+    .contact {
+        padding: 10px;
+    }
+
+    .contact p,
+    .content p {
+        font-size: 12px;
+        margin-left: 0;
+    }
+
+    .content h3 {
+        font-size: 16px;
+    }
+
+    .content nav ol {
+        font-size: 11px;
+        padding-left: 0;
+    }
+
+    .contact-icons,
+    .social-icons {
+        margin: 20px;
+        flex-direction: column;
+    }
+
+    .contact-icons article,
+    .social-icons article {
+        margin-bottom: 30px;
+    }
+
+    .contact-icons article:hover,
+    .social-icons article:hover {
+        transform: none;
+    }
+
+    #faq-header p {
+        font-size: 12px;
+    }
+
+    #faq-header .faq-category {
+        margin: 20px;
+        flex-direction: column;
+    }
+
+    #faq-main .faq-category-item .accordion {
+        margin: 0;
+    }
+
+    #faq-main .faq-category-item .accordion-button {
+        font-size: 14px;
+    }
+
+    #faq-main .faq-category-item .accordion-item p {
+        font-size: 12px;
+    }
+
+    #faq-main .faq-category-item .accordion-body {
+        padding: 10px;
+    }
+
+    .about p {
+        padding: 10px 0;
+    }
+
+    .about-section .footer-social {
+        flex-direction: row;
+    }
+
+    .about-section ul li {
+        font-size: 14px;
+    }
+
+    .double-buttons a {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+
+    .double-buttons a img {
+        margin-left: 5px !important;
+    }
+
+    .double-buttons #faq {
+        margin-left: 10px;
+    }
+
+    .double-buttons #faq img {
+        width: 20px;
+    }
+
+    .double-buttons #contact img {
+        width: 16px;
+    }
+
+    .pay-success,
+    .pay-fail {
+        padding: 15px !important;
+        height: auto;
+    }
+
+    .pay-success img,
+    .pay-fail img {
+        width: 60px;
+    }
+
+    .pay-success p,
+    .pay-fail p {
+        font-size: 12px;
+    }
+
+    .pay-success span,
+    .pay-fail span {
+        font-size: 14px;
+    }
+
+    .pay-fail .fail-alert {
+        padding: 10px;
+    }
+
+    .buttons {
+        margin: 20px auto;
+    }
+
+    .buttons a {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .pay-success .buttons #view-order,
+    .pay-fail .buttons #back-to-cart {
+        margin-left: 10px;
+    }
+
+    #order-factor {
+        padding: 10px;
+    }
+
+    #order-factor-table1 img {
+        width: 60px;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    table h1 {
+        font-size: 14px !important;
+    }
+
+    table h3 {
+        font-size: 12px !important;
+    }
+
+    table h6 {
+        font-size: 10px !important;
+        word-wrap: break-word;
+    }
+
+    table span {
+        font-size: 8px !important;
+        word-wrap: break-word;
+    }
+
+
+
+
+
+}

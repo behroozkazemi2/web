@@ -1,0 +1,107 @@
+package com.behrouz.web.okhttp.model.request;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.behrouz.web.okhttp.model.response.RequestDetailResponse;
+
+import java.util.List;
+
+/**
+ * Created By Hapi KZM
+ * Company: reza
+ * Package: ir.mobintabaran.xima.server.api.customer.request
+ * Project Name: xima-server
+ * 27 May 2020
+ **/
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class CustomProductRequest {
+
+    private int id;
+
+    private int providerId;
+
+    private RequestDetailResponse status;
+
+    private String description;
+
+    private double price;
+
+    private List<ImageRequest> images;
+
+    public CustomProductRequest(int id, int providerId, String description, List<ImageRequest> images) {
+        this.id = id;
+        this.providerId = providerId;
+        this.description = description;
+        this.images = images;
+    }
+
+    public CustomProductRequest(int providerId, String description, List<ImageRequest> images) {
+        this.providerId = providerId;
+        this.description = description;
+        this.images = images;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public int getProviderId () {
+        return providerId;
+    }
+    public void setProviderId ( int providerId ) {
+        this.providerId = providerId;
+    }
+
+
+    public RequestDetailResponse getStatus() {
+        return status;
+    }
+
+    public void setStatus(RequestDetailResponse status) {
+        this.status = status;
+    }
+
+    public String getDescription () {
+        return description;
+    }
+    public void setDescription ( String description ) {
+        this.description = description;
+    }
+
+
+    public double getPrice () {
+        return price;
+    }
+    public void setPrice ( double price ) {
+        this.price = price;
+    }
+
+
+    public List < ImageRequest > getImages () {
+        return images;
+    }
+    public void setImages ( List < ImageRequest > images ) {
+        this.images = images;
+    }
+
+
+    public CustomProductRequest () {
+    }
+
+
+    @Override
+    public String toString () {
+        return "CustomProductRequest{" +
+                "id=" + id +
+                ", providerId=" + providerId +
+                ", status=" + status +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", images=" + images +
+                '}';
+    }
+}

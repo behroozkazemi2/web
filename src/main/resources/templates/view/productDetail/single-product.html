@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+
+<div th:remove="tag" th:fragment="style">
+
+    <link rel="stylesheet" th:href="@{/assets/css/pages/productDetail/new-single-product.css}">
+    <meta name="keywords" th:content="${productDetail.name}">
+    <meta name="description" th:content=" 'خرید ' + ${productDetail.name} + ' با بهترین کیفیت و برند محبوب در بهتاتهویه  ارزونتر از همه جا! '">
+    <title>خرید [[${productDetail.name}]] - [[${productDetail.category.name}]] - فروشگاه اینترنتی بهتاتهویه</title>
+</div>
+
+
+<body id="productDetails">
+
+
+<div th:remove="tag" th:fragment="content">
+
+    <div class="content" th:object="${productDetail}">
+        <h1 class="d-bugingg d-none">خرید [[${productDetail.name}]] - [[${productDetail.category.name}]] - فروشگاه اینترنتی بهتاتهویه </h1>
+
+        <input hidden id="productProviderId" th:value="${productProviderId}">
+        <input hidden id="productId" th:value="${productId}">
+        <input hidden id="productProviderName" th:value="*{name}">
+        <section id="product">
+            <div class="product-breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="'/productCategory/all/all/' + *{#strings.replace(parentCategory.name,' ','-')} + '?categoryId='+ *{parentCategory.id}">[[*{parentCategory == null ? '-' : parentCategory.name}]]</a></li>
+                    <li class="breadcrumb-item"><a th:href="'/productCategory/all/all/' + *{#strings.replace(category.name,' ','-')} + '?categoryId='+ *{category.id}">[[*{category.name}]]</a></li>
+                    <li class="breadcrumb-item"><span>[[*{name}]]</span></li>
+                </ul>
+            </div>
+            <div class="product row">
+                <section class="featured-image col-lg-4 col-sm-12">
+
+                    <input hidden class="product_cat" th:value="*{category.id}">
+                    <input hidden class="product_parent_cat" th:value="*{parentCategory.id}">
+
+                    <div id="img-1" class=" zoomWrapper single-zoom br-8px">
+                        <a >
+                            <img th:if="*{#lists.size(images)} != 0" th:data-image-id="*{images[0]}" class="rounded hass_check br-8px open_in_modal" id="zoom1" th:src="'/thumbnail/files/0/' + *{images[0]} + ''" th:alt= "*{name}">
+                            <img th:unless="*{#lists.size(images)} != 0" data-image-id="7" class="rounded br-8px open_in_modal" id="zoom1" src="/assets/behta_logo/BehtaTahvie.png" th:alt= "*{name}">
+                        </a>
+                    </div>
+                    <div class="single-zoom-thumb gallery-slider">
+                        <ul  style="cursor: pointer" class="s-tab-zoom owl-carousel single-product-active mt-2 " id="gallery_01">
+                    <!--  th:each="image : ${productDetails.images}" -->
+                            <li  class="mr-2" style="min-height: 200px; max-height: 200px; align-content: center" th:each="image : *{images}"   >
+                                <a  class="elevatezoom-gallery active" data-update="">
+                                    <img th:src="'/thumbnail/files/0/'+${image}+''"  th:data-image-id="${image}" style="max-height: 200px;" class="small_pic sold mr-2 rounded" th:alt= "*{name}"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="product-icon col-lg-1 col-sm-12  text-center">
+<!--                    <button class="add-to-favorite "><i class="fa fa-heart-o"></i></button>-->
+                    <button class="share "><i class="fa fa-share-alt"></i></button>
+                </section>
+                <section class="product-content col-lg-7 col-sm-12" >
+                    <div class="product-content">
+                        <h1>[[*{name}]]</h1>
+                        <div class="product-score">
+                            <span class="star"><i class="fa fa-star"></i></span>
+                            <span class="vote">[[${pprate}]]</span>
+                            <span class="comments-number">[[*{userDescription}]]</span>
+                        </div>
+                        <span th:class="*{(existence or productCount != 0 ? 'exist' : 'notexist' )}">[[*{(existence or productCount == 0 ? 'موجود' : '  ناموجود' )}]]</span>
+                        <span th:if="*{productCount < 5 and productCount > 0}" th:class="*{(productCount < 5 and productCount > 0 ? 'notexist' : '' )}">
+                            <i class="fa fa-info-circle"></i>
+                              [[*{unit.name}]]
+                            موجود در انبار:
+                            [[*{productCount}]]
+
+                        </span>
+                        <p class="product-desc bg-light">
+                            [[*{shortDescription}]]
+                        </p>
+                        <div class="product-cost">
+
+                            <div  th:if="*{offPercent} != 0 " class="product-del">
+                                <del class="primitive_price">[[*{primitiveAmount}]] تومان</del>
+                                <span class="percent">[[*{offPercent}]] %</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price final_price font-20 "style="font-weight: bolder">[[*{finalAmount}]] تومان</span>
+                            </div>
+                        </div>
+                        <div class="product-add-to-cart ">
+                            <div class="add-to-card-number " style="display: inline-flex">
+                                <span id="inc-button" class="changeCount-plus changeCount spinner-button"
+                                      th:data-min="*{minAllow}" th:data-max="*{productCount < maxAllow ? productCount : maxAllow }" th:data-step="*{unitStep}"><i class="fa fa-plus"></i></span>
+                                <input  class="product_count" readonly id="product_count" type="number" name="number" th:min="*{minAllow}" th:max="*{productCount < maxAllow ? productCount : maxAllow }" th:value="1" th:step="*{unitStep}">
+                                <span id="dec-button" class="changeCount-minus changeCount spinner-button"
+                                      th:data-min="*{minAllow}" th:data-max="*{productCount < maxAllow ? productCount : maxAllow }" th:data-step="*{unitStep}"><i class="fa fa-minus"></i></span>
+                            </div>
+                            <button id="submit_add" th:data-id="${productProviderId}" type="button" th:style="(*{existence or productCount != 0} ? '' : 'opacity:0.5;')"
+                                    th:disabled="(*{existence or productCount != 0} ? 'false' : 'true')"
+
+                                    th:classappend="*{(existence or productCount != 0 ? '' : 'notexist' )}"
+                                    class="btn btn-info submit_add btn-sm">افزودن به سبد
+                                خرید
+<!--                                To Do Hassan-->
+                                <i class="button-loading spinner-border loading-btn d-none"></i>
+                            </button>
+                        </div>
+                        <div class="product-tags col-lg-12 col-sm-12 row">
+                            <span class="col-sm-12 col-lg-2">برند :
+                                <a th:each="b, iter: *{brands}" class="bg-light border px-2 py-2" th:id="${b.id}" th:href="'/productCategory/' + ${b.name} + '/all/all?brandId=' + ${b.id}">[[${b.name}]]
+                                </a>
+                            </span>
+                            <span class=" tag_name col-sm-12 col-lg-6">برچسب ها:
+                                <a th:each="t, iter: *{tags}" class="bg-light  border px-2 py-2" th:id="${t.id}" rel="tag" th:href="'/productCategory/all/'+ ${t.name} +'/all?tagId=' + ${t.id}">[[${t.name}]]
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <section id="icon-box">
+                        <div th:replace="fragment/homePageFragment.html::content_2"></div>
+                    </section>
+                </section>
+            </div>
+            <div class="product-mobile box-shadow" >
+                <section class="product-header">
+                    <h1>[[*{name}]]</h1>
+                    <div class="product-score">
+                        <span class="star"><i class="fa fa-star"></i></span>
+                        <span class="vote">[[*{rate}]]</span>
+                        <span class="comments-number">[[*{userDescription}]]</span>
+                    </div>
+                    <div class="product-statue">
+                        <span th:class="*{(existence or productCount != 0 ? 'exist' : 'notexist' )}">[[*{(existence or productCount == 0 ? 'موجود' : '  ناموجود' )}]]</span>
+                        <span th:if="*{productCount < 5 and productCount > 0}" th:class="*{(productCount < 5 and productCount > 0 ? 'notexist' : '' )}">
+                        [[*{unit.name}]]
+                            موجود در انبار:
+                            [[*{productCount}]]
+                        </span>
+                        <div class="product-icon">
+<!--                            <button class="add-to-favorite"><i class="fa fa-heart-o"></i></button>-->
+                            <button class="share"><i class="fa fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="featured-image">
+
+                    <div  class="zoomWrapper single-zoom br-8px">
+                        <a>
+                            <img th:if="*{#lists.size(images)} != 0"  th:data-image-id="*{images[0]}" class="hass_check br-8px open_in_modal" id="zoom1" th:src="'/thumbnail/files/0/' + *{images[0]} + ''" th:alt= "*{name}">
+                            <img th:unless="*{#lists.size(images)} != 0"  data-image-id="7" class="br-8px open_in_modal" id="zoom1" src="/assets/behta_logo/BehtaTahvie.png" th:alt= "*{name}">
+                        </a>
+                    </div>
+                    <div class="single-zoom-thumb gallery-slider">
+                        <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                            <!--  th:each="image : ${productDetails.images}" -->
+                            <li class="br-8px mr-1" th:each="image : *{images}"  >
+                                <a  class="elevatezoom-gallery active" data-update="">
+                                    <img th:src="'/thumbnail/files/0/'+${image}+''"  class="sold br-8px mr-1" th:alt= "*{name}"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="product-content">
+                    <div class="product-tags">
+                        <span>برند :
+                            <a th:each="b, iter: *{brands}"  th:id="${b.id}" rel="tag" th:href="'/productCategory/' + ${b.name} + '/all/all?brandId=' + ${b.id}">[[${b.name}]]
+                            </a>
+                        </span>
+                        <span class="mr-2">برچسب ها:
+                                <a th:each="t, iter: *{tags}"  th:id="${t.id}" rel="tag" th:href="'/productCategory/all/'+ ${t.name} +'/all?tagId=' + ${t.id}">[[${t.name}]]
+                                </a>
+                            </span>
+                    </div>
+                    <div class="product-cost">
+                        <div class="product-del">
+                            <del class="primitive_price">[[*{primitiveAmount}]] تومان</del>
+                            <span class="percent">[[*{offPercent}]] %</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price final_price">[[*{finalAmount}]] تومان</span>
+                        </div>
+                    </div>
+                    <h3>توضیحات محصول</h3>
+                    <p class="product-desc">
+                        [[*{shortDescription}]]
+                    </p>
+                </section>
+            </div>
+            <section id="icon-box-mobile">
+                <div th:replace="fragment/homePageFragment.html::content_2"></div>
+            </section>
+        </section>
+
+        <section class="information_table" id="last-order-table">
+
+            <div class="loading-box">
+                <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                <div class="loading"></div>
+            </div>
+
+        </section>
+
+        <section id="info_cat_table" class="info_cat_table">
+
+        </section>
+        <section id="related-product">
+
+            <div class="product-carousel">
+                <h3 class="title">محصولات مرتبط</h3>
+                <div id="related-product-carousel" class="product-box custom1 owl-carousel">
+
+
+                </div>
+            </div>
+        </section>
+        <section id="product-comment " >
+            <h3 class="title">امتیاز و دیدگاه کاربران</h3>
+            <div class="product-comment col-lg-12 col-sm-12 row">
+                <section id="rate_detail" class=" col-lg-2 col-sm-12"></section>
+                <section class="product-comments col-lg-9 col-sm-12">
+                    <div id="comment-box" class="comment-box">
+                    </div>
+                    <div class="loading-box comment-loading">
+                        <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                        <div class="loading"></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <section th:object="${productDetail}" class="product-add-to-cart-mobile fixed-bottom box-shadow">
+        <div class="add-to-card-number">
+            <span id="inc-button" class="changeCount-plus changeCount spinner-button" th:data-min="*{minAllow}"
+                  th:data-max="*{productCount < maxAllow ? productCount : maxAllow }" th:data-step="*{unitStep}"><i class="fa fa-plus"></i></span>
+            <input class="product_count" readonly id="product_count" type="number" name="number" th:min="*{minAllow}" th:max="*{productCount < maxAllow ? productCount : maxAllow }"
+                   th:value="1" th:step="*{unitStep}">
+            <span id="dec-button" class="changeCount-minus changeCount spinner-button" th:data-min="*{minAllow}"
+                  th:data-max="*{productCount < maxAllow ? productCount : maxAllow }" th:data-step="*{unitStep}"><i class="fa fa-minus"></i></span>
+        </div>
+        <button id="submit_add" th:data-id="${productProviderId}" type="button" class="btn btn-info submit_add" th:style="(*{existence or productCount != 0} ? '' : 'opacity:0.5;')"
+                th:disabled="(*{existence or productCount != 0} ? 'false' : 'true')">افزودن به سبد
+            خرید
+            <i class="button-loading spinner-border loading-btn d-none"></i>
+
+        </button>
+    </section>
+    <div id="comment_modal" class="modal fade" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content text-center" >
+
+            <div class="modal-header">
+                <h6 class="modal-title" id="addAddressLabel">ثبت نظر</h6>
+                <span class="modal-close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+            </div>
+            <div class="address-modal-body modal-body">
+                <form >
+                    <div th:if="${!isAuthenticated}" class="col-6">
+                        <label for="commentor_name" style="text-align: -webkit-right;">نام و نام خانوادگی</label>
+                        <input type="text" id="commentor_name">
+                    </div>
+                    <div th:if="${!isAuthenticated}" class="col-6">
+                        <label for="commentor_email" style="text-align: -webkit-right;">ایمیل</label>
+                        <input type="email" id="commentor_email">
+                    </div>
+                    <div class="col-12">
+                        <label for="commentor_comment" style="text-align: -webkit-right;" >نظر</label>
+                        <textarea
+                                placeholder="حداکثر طول متن ۵۰۰ کلمه می‌باشد."
+                                id="commentor_comment"
+                                name="commentor_comment"
+                                class="form-control col-12"></textarea>
+                    </div>
+                    <div class="col-12 mt-3 star-rating score-star row" style="margin-right: 4px;flex-wrap: nowrap !important; direction: ltr !important;" >
+                                <input type="radio" id="5-stars" name="rating" value="5" />
+                                <label for="5-stars" class="col-2 star" data-val="5">&#9733;</label>
+                                <input type="radio" id="4-stars" name="rating" value="4" />
+                                <label for="4-stars" class="col-2 star" data-val="4">&#9733;</label>
+                                <input type="radio" id="3-stars" name="rating" value="3" />
+                                <label for="3-stars" class="col-2 star" data-val="3">&#9733;</label>
+                                <input type="radio" id="2-stars" name="rating" value="2" />
+                                <label for="2-stars" class="col-2 star" data-val="2">&#9733;</label>
+                                <input type="radio" id="1-star" name="rating" value="1" />
+                                <label for="1-star" class="col-2 star" data-val="1">&#9733;</label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="address-cancel btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                <button id="submit_comment_btn" type="button" class="address-confirm btn btn-primary">ثبت نظر</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="image_modal" class="modal fade" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content text-center" >
+                <div class="modal-header">
+                    <span class="modal-close fa fa-close" data-bs-dismiss="modal" aria-label="Close" ></span>
+                </div>
+                <div class="modal-body">
+                    <img style="min-width:auto;min-height: auto" th:src="@{/assets/behta_logo/BehtaTahvie.png}" th:alt= "*{name}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div th:remove="tag" th:fragment="script">
+
+    <script th:src="@{/assets/js/pages/productDetail/productDetail.js}" type="text/javascript"></script>
+</div>
+
+</body>
+
+</html>

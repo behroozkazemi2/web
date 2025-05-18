@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <title>پرداخت بهتا</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="بهتاتهویه">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="پرداخت بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta name="keywords" content=",تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه,بهتاتهویه, فروشگاه اینترنتی بهتاتهویه
+    بهتاتهویه, فروشگاه اینترنتی بهتاتهویه, تهویه مطبوع, چیلر, کولر گازی, تجهیزات تهویه, درباره ما, خرید آنلاین تهویه مطبوع">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="پرداخت بهتاتهویه">
+    <meta property="og:description" content="پرداخت بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta property="og:url" content="https://shop.behtatahvie.com/about">
+    <meta property="og:site_name" content="فروشگاه اینترنتی بهتاتهویه">
+    <meta property="og:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="پرداخت بهتاتهویه">
+    <meta name="twitter:description" content="پرداخت بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع با بهترین قیمت در ایران.">
+    <meta name="twitter:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="32x32">
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://shop.behtatahvie.com/assets/media/logos/logo-1.png">
+    <meta name="msapplication-TileImage" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://shop.behtatahvie.com/about">
+
+    <div th:remove="tag" th:fragment="style">
+
+        <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+        <!--owl carousel min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/owl.carousel.min.css}">
+        <!--slick min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/slick.css}">
+        <!--magnific popup min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">
+        <!--font awesome css-->
+        <link rel="stylesheet" th:href="@{/assets/css/font.awesome.css}">
+        <!--ionicons css-->
+        <link rel="stylesheet" th:href="@{/assets/css/ionicons.min.css}">
+        <!--linearicons css-->
+        <link rel="stylesheet" th:href="@{/assets/css/linearicons.css}">
+        <!--animate css-->
+        <link rel="stylesheet" th:href="@{/assets/css/animate.css}">
+        <!--jquery ui min css-->
+        <link rel="stylesheet" th:href="@{/assets/css/jquery-ui.min.css}">
+        <!--slinky menu css-->
+<!--        <link rel="stylesheet" th:href="@{/assets/css/slinky.menu.css}">-->
+        <!--plugins css-->
+        <link rel="stylesheet" th:href="@{/assets/css/plugins.css}">
+
+        <link rel="stylesheet" th:href="@{/assets/css/toast.css}">
+
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+
+        <!--modernizr min js here-->
+        <script th:src="@{/static/assets/oldJs/vendor/modernizr-3.7.1.min.js}"></script>
+    </div>
+
+</head>
+
+<body>
+
+<h1 class="d-bugingg d-none">پرداخت بهتا</h1>
+
+    <div>
+
+        <div class="row justify-content-center">
+            <p class="text-center text-success" th:if="${success}">خرید با موفقیت انجام شد. با تشکر از حسن انتخاب
+                شما</p>
+
+        </div>
+
+        <p class="text-center text-danger" style="font-size: 20px; line-height: 45px;" th:unless="${success}">تراکنش
+            موفقیت آمیز نبود.
+        </p>
+
+        <p style="font-size: 20px; text-align: center; margin-right: 10px"> در صورت کسر وجه از حساب شما،این مبلغ تا
+            72 ساعت آینده به حساب شمابرگشت خواهد
+            خورد.</p>
+
+    </div>
+
+    <div class="row justify-content-center mt-4"  th:if="${success}">
+        <a class="btn btn-secondary back-to-site"
+           th:href="'https://shop.behtatahvie.com/user/information?id=' + ${billId}">بازگشت به سایت</a>
+    </div>
+
+
+    <div th:fragment="scripts" th:remove="tag">
+
+        <script th:src="@{/assets/select2-develop/dist/js/select2.min.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/DataTables/datatables.js}"></script>
+        <script th:src="@{/static/assets/oldJs/exit.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/showImageModal.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/starRate.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/addToCart.js}"></script>
+        <script th:src="@{/static/assets/oldJs/lib/cutWord/shortWord.js}"></script>
+        <script th:src="@{/static/assets/oldJs/pages/shop/shop.js}"></script>
+
+    </div>
+</body>
+</html>
+

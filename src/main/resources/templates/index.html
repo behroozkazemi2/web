@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa"
+      dir="rtl"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- begin::Head -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="بهتاتهویه">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content=" بهتاتهویه تامین کننده انواع چیلر های صنعتی و تجاری، کولرگازی، تجهیزات تهویه و اسکای کردن با بهترین قیمت در ایران.">
+    <meta name="keywords" content="تهویه مطبوع, کولر گازی, اسپیلت, چیلر, داکت, بهتا تهویه, بهتاتهویه, فروشگاه اینترنتی بهتاتهویه">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="فروشگاه اینترنتی بهتاتهویه">
+    <meta property="og:url" content="https://shop.behtatahvie.com">
+    <meta property="og:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content=" بهتاتهویه تامین کننده انواع چیلر های صنعتی و تجاری، کولرگازی، تجهیزات تهویه و اسکای کردن با بهترین قیمت در ایران.">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@behatatahvie">
+    <meta name="twitter:title" content="فروشگاه اینترنتی بهتاتهویه">
+    <meta name="twitter:description" content=" بهتاتهویه تامین کننده انواع چیلر های صنعتی و تجاری، کولرگازی، تجهیزات تهویه و اسکای کردن با بهترین قیمت در ایران.">
+    <meta name="twitter:image" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+    <meta name="twitter:image:width" content="1200">
+    <meta name="twitter:image:height" content="630">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/behta_logo/BehtaTahvie.png" >
+
+    <!-- Alternate Links -->
+    <link rel="alternate" href="https://shop.behtatahvie.com" hreflang="fa" >
+    <link rel="alternate" href="https://behtatahvie.com" hreflang="fa" >
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://shop.behtatahvie.com">
+
+    <title>فروشگاه اینترنتی بهتاتهویه</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" th:href="@{/assets/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/ekiticons.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/slider/jquery-ui.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/slider/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/slider/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/slider/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/header-style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/new-style.css}">
+    <link rel="stylesheet" th:href="@{/assets/oldJs/lib/bootstrap-toastr/toastr.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+
+    <div th:remove="tag" th:if="${view != null}">
+        <div th:remove="tag" th:include="${view}::style"></div>
+    </div>
+    <!-- Schema Markup for Organization -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "فروشگاه اینترنتی بهتاتهویه",
+            "url": "https://shop.behtatahvie.com",
+            "logo": "https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+9809105001184",
+                "contactType": "Customer Service"
+            },
+            "sameAs": [
+                "https://www.facebook.com/behtatahvie",
+                "https://www.twitter.com/behtatahvie",
+                "https://www.instagram.com/behtatahvie"
+            ]
+        }
+    </script>
+
+    <!-- Schema Markup for LocalBusiness -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "فروشگاه اینترنتی بهتاتهویه",
+            "image": "https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png",
+            "@id": "https://shop.behtatahvie.com",
+            "url": "https://shop.behtatahvie.com",
+            "telephone": "+9809105001184",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "مشهد - چهارراه پل خاکی",
+                "addressLocality": "مشهد",
+                "postalCode": "1234567890",
+                "addressCountry": "ایران"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 35.6892,
+                "longitude": 51.3890
+            },
+            "sameAs": [
+                "https://behtatahvie.com",
+                "https://www.facebook.com/behtatahvie",
+                "https://www.twitter.com/behtatahvie",
+                "https://www.instagram.com/behtatahvie"
+            ]
+        }
+    </script>
+
+</head>
+
+
+<body>
+
+<!-- begin:: Header -->
+<div th:replace="fragment/header::header"></div>
+<!-- end:: Header -->
+
+
+<!-- begin:: content -->
+<div th:remove="tag" th:if="${view != null}">
+    <div th:remove="tag" th:include="${view}::content"></div>
+</div>
+<!-- end:: content -->
+
+
+<!-- begin:: footer -->
+<div th:replace="fragment/footer::footer"></div>
+<!-- end:: footer -->
+
+<script th:src="@{/assets/js/jquery-3.6.0.min.js}" type="text/javascript"></script>
+<!--<script th:src="@{https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js}" type="text/javascript"></script>-->
+<script th:src="@{/assets/js/lib/popper/popper.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/lib/blowup/blowup.min.js}"></script>
+<script th:src="@{/assets/js/new-index.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/index.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/jquery.simple.timer.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/lib/slider/nouislider.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/lib/slider/jquery.ui.js}" type="text/javascript"></script>
+
+
+<!-- Main JS -->
+
+<script th:src="@{/assets/select2-develop/dist/js/select2.min.js}"></script>
+
+<!--<script th:src="@{/assets/oldJs/lib/toast.js}"></script>-->
+
+<script th:src="@{/assets/oldJs/lib/bootstrap-toastr/toastr.js}"></script>
+<script th:src="@{/assets/oldJs/pages/header.js}"></script>
+<script th:src="@{/assets/oldJs/lib/changeformat/changeformat.js}"></script>
+
+<script th:src="@{/assets/oldJs/vendor/modernizr-3.7.1.min.js}"></script>
+<!--owl carousel min js-->
+<script th:src="@{/assets/oldJs/owl.carousel.min.js}"></script>
+<!--slick min js-->
+<script th:src="@{/assets/oldJs/slick.min.js}"></script>
+<!--magnific popup min js-->
+<script th:src="@{/assets/oldJs/jquery.magnific-popup.min.js}"></script>
+<!--counterup min js-->
+<script th:src="@{/assets/oldJs/jquery.counterup.min.js}"></script>
+<!--jquery countdown min js-->
+<script th:src="@{/assets/oldJs/jquery.countdown.js}"></script>
+
+<script th:src="@{/assets/oldJs/lib/persian-date.js}"></script>
+<!--jquery ui min js-->
+<script th:src="@{/assets/oldJs/jquery.ui.js}"></script>
+<!--jquery elevatezoom min js-->
+<script th:src="@{/assets/oldJs/jquery.elevatezoom.js}"></script>
+<!--isotope packaged min js-->
+<script th:src="@{/assets/oldJs/isotope.pkgd.min.js}"></script>
+<!--slinky menu js-->
+<script th:src="@{/assets/oldJs/slinky.menu.js}"></script>
+<!-- Plugins JS -->
+<script th:src="@{/assets/oldJs/plugins.js}"></script>
+<!-- sweet alert JS -->
+<script th:src="@{/assets/oldJs/lib/sweetalert.min.js}"></script>
+
+<!-- end old js-->
+
+
+<!--begin::Page Scripts(used by this page) -->
+<div th:remove="tag" th:if="${view != null}">
+    <div th:remove="tag" th:include="${view}::script"></div>
+</div>
+
+</body>
+
+</html>

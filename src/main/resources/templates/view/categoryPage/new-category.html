@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>دسته بندی ها - چای</title>
+    <link rel="stylesheet" href="css/style.fontawesome.css">
+    <link rel="stylesheet" href="css/ekiticons.css">
+    <link rel="stylesheet" href="css/happy.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css">
+</head>
+<body id="categoryPage">
+
+
+    <div class="ctg-buttons-mobile">
+
+        <div class="ctg-filter">
+            <div id="ctg-filter" class="sideFilter">
+                <div class="sideFilter-header">
+                    <span>جستجوی پیشرفته</span>
+                    <span class="closebtn" onclick="closeFilter()">&times;</span>
+                </div>
+                <div class="ctg-section">
+                    <h3 class="title">دسته بندی نتایج</h3>
+                    <div class="product-breadcrumb">
+                        <a href="#" class="product-breadcrumb-item">کالاهای تهویه مطبوع   </a>
+                        <a href="#" class="product-breadcrumb-item">نوشیدنی</a>
+                        <span class="product-breadcrumb-lastitem">گلستان</span>
+                    </div>
+                    <h3 class="title">فیلتر</h3>
+                    <span>برند</span>
+                    <form class="filter-brands">
+                        <input type="search" id="filter-search" name="filter-search" placeholder="جستجو...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <div class="filter-checkbox overflow-auto">
+                            <div class="filter-checkbox-item">
+                                <input type="checkbox" id="item1" name="item1" value="گلستان">
+                                <label for="item1">گلستان</label>
+                            </div><br>
+                            <div class="filter-checkbox-item">
+                                <input type="checkbox" id="item2" name="item2" value="توینینگز">
+                                <label for="item1">توینینگز</label>
+                            </div><br>
+                            <div class="filter-checkbox-item">
+                                <input type="checkbox" id="item3" name="item3" value="دو غزال">
+                                <label for="item1">دو غزال</label>
+                            </div><br>
+                            <div class="filter-checkbox-item">
+                                <input type="checkbox" id="item4" name="item4" value="چای احمد">
+                                <label for="item1">چای احمد</label>
+                            </div>
+                            <div class="filter-checkbox-item">
+                                <input type="checkbox" id="item4" name="item4" value="چای احمد">
+                                <label for="item1">دبش</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="existed-switch">
+                        <span>فقط کالاهای موجود</span>
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider-checkbox round"></span>
+                        </label>
+                    </div>
+                    <div class="filter-price">
+                        <span>محدوده قیمت</span>
+                        <div class="prices">
+                            <span class="input-price col-5"><span>از</span><input type="number" placeholder="0" value="0" id="first-price"><small>تومان</small></span>
+                            <span class="input-price col-6"><span>از</span><input type="number" placeholder="900,000" value="900000" id="last-price"><small>تومان</small></span>
+                        </div>
+                        <input type="range" class="custom-range" min="first-price" max="last-price">
+                    </div>
+                    <div class="filter-submit">
+                        <button class="filter" type="submit">اعمال فیلتر</button>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="openbtn" onclick="openFilter()">
+                <img src="images/icons/14.svg" alt=" بهتاتهویه">
+                جستجوی پیشرفته
+            </button>
+        </div>
+        <div class="ctg-sort">
+                <div id="ctg-sort" class="sideSort">
+                    <div class="ctg-sort-box box-shadow">
+                        <div class="ctg-sort-header">
+                            <span>مرتب سازی براساس:</span>
+                            <span class="closebtn" onclick="closeSort()">&times;</span>
+                        </div>
+                        <div class="sort-content">
+                            <button type="button" class="sort-btn active">جدیدترین</button>
+                            <button type="button" class="sort-btn">گران ترین</button>
+                            <button type="button" class="sort-btn">ارزان ترین</button>
+                            <button type="button" class="sort-btn">محبوب ترین</button>
+                            <button type="button" class="sort-btn">پرفروش ترین</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="openbtn" onclick="openSort()"><i class="fa fa-sort-amount-desc"></i>
+                    مرتب سازی
+                </button>
+            </div>
+    </div>
+    <div class="content">
+        <h1 class="d-bugingg d-none">دسته بندی ها</h1>
+        <section id="banner">
+            <div class="banner">
+                <div class="banner-item">
+                    <figure>
+                        <a href="#"><img src="images/15.svg" alt=" بهتاتهویه"></a>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <div class="ctg-content">
+            <aside class="ctg-sidebar col-4">
+                <div class="ctg-section">
+                    <div class="filter-control">
+                        <h3 class="title">فیلترهای اعمال شده</h3>
+                        <button class="remove-filter" type="button">حذف همه</button>
+                    </div>
+                    <div class="alert alert-dismissible fade show">
+                        <button class="applied-filter close" type="alert" data-dismiss="alert">
+                            <span>گلستان</span>&times
+                        </button>
+                    </div>
+                </div>
+                <div class="ctg-section">
+                    <h3 class="title">دسته بندی نتایج</h3>
+                    <div class="product-breadcrumb">
+                        <a href="#" class="product-breadcrumb-item">کالاهای تهویه مطبوع   </a>
+                        <a href="#" class="product-breadcrumb-item">نوشیدنی</a>
+                        <span class="product-breadcrumb-lastitem">گلستان</span>
+                    </div>
+                    <h3 class="title">فیلتر</h3>
+                    <span>برند</span>
+                    <form class="filter-brands">
+                        <input type="search" id="filter-search" name="filter-search" placeholder="جستجو...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                            <div class="filter-checkbox overflow-auto">
+                                <div class="filter-checkbox-item">
+                                    <input type="checkbox" id="item1" name="item1" value="گلستان">
+                                    <label for="item1">گلستان</label>
+                                </div><br>
+                                <div class="filter-checkbox-item">
+                                    <input type="checkbox" id="item2" name="item2" value="توینینگز">
+                                    <label for="item2">توینینگز</label>
+                                </div><br>
+                                <div class="filter-checkbox-item">
+                                    <input type="checkbox" id="item3" name="item3" value="دو غزال">
+                                    <label for="item3">دو غزال</label>
+                                </div><br>
+                                <div class="filter-checkbox-item">
+                                    <input type="checkbox" id="item4" name="item4" value="چای احمد">
+                                    <label for="item4">چای احمد</label>
+                                </div>
+                                <div class="filter-checkbox-item">
+                                    <input type="checkbox" id="item5" name="item4" value="چای دبش">
+                                    <label for="item5">دبش</label>
+                                </div>
+                            </div>
+                    </form>
+                    <div class="existed-switch">
+                        <span>فقط کالاهای موجود</span>
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider-checkbox round"></span>
+                        </label>
+                    </div>
+                    <div class="filter-price">
+                        <span>محدوده قیمت</span>
+                        <div class="prices">
+                            <span class="input-price col-5"><span>از</span><input type="number" placeholder="0" value="0" id="first-price"><small>تومان</small></span>
+                            <span class="input-price col-6"><span>از</span><input type="number" placeholder="900,000" value="900000" id="last-price"><small>تومان</small></span>
+                        </div>
+                        <input type="range" class="custom-range" min="first-price" max="last-price">
+                    </div>
+                    <div class="filter-submit">
+                        <button class="filter" type="submit">اعمال فیلتر</button>
+                    </div>
+
+                </div>
+            </aside>
+            <section class="ctg-main col-8">
+                <div class="ctg-section">
+                    <h3 class="sort-title">مرتب سازی براساس:</h3>
+                    <div class="sort-content">
+                        <button type="button" class="sort-btn active">جدیدترین</button>
+                        <button type="button" class="sort-btn">گران ترین</button>
+                        <button type="button" class="sort-btn">ارزان ترین</button>
+                        <button type="button" class="sort-btn">محبوب ترین</button>
+                        <button type="button" class="sort-btn">پرفروش ترین</button>
+                    </div>
+                </div>
+                <div id="ctg-product">
+                    <div class="ctg-product">
+                        <div class="product-box">
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <a href="#"><img src="images/BehtaTahvie.png" alt=" بهتاتهویه"></a>
+                                <div class="product-content">
+                                    <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                    <div class="product-score">
+                                        <span class="star"><i class="fa fa-star"></i></span>
+                                        <span class="vote">4.8</span>
+                                        <span class="count">(22)</span>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="product-content">
+                                        <span><a href="#">آبنبات شیرین عسل با روکش کاکائویی بسته 25 عددی</a></span>
+                                        <div class="product-score">
+                                            <span class="star"><i class="fa fa-star"></i></span>
+                                            <span class="vote">4.8</span>
+                                            <span class="count">(22)</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="product-cart">
+                                            <a class="add-to-cart" href="#">
+                                                <i class="fa fa-cart-plus"></i>
+
+                                            </a>
+                                        </div>
+                                        <div class="product-cost">
+                                            <div class="product-del">
+                                                <del>76,000 تومان</del>
+                                                <span class="percent">22%</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="price">54,000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pagination">
+                    <ul class="pagination">
+                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-right"></i></a></li>
+                        <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-left"></i></a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.simple.timer.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

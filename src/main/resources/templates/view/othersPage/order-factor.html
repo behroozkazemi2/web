@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fa" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:cellpadding="http://www.w3.org/1999/xhtml">
+
+
+<div th:remove="tag" th:fragment="style">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="بهتاتهویه">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="فاکتور سفارش - فروشگاه اینترنتی بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع.">
+    <meta name="keywords" content="بهتاتهویه, فروشگاه اینترنتی بهتاتهویه, فاکتور سفارش, سفارش آنلاین, تجهیزات تهویه مطبوع">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="فاکتور سفارش - فروشگاه اینترنتی بهتاتهویه">
+    <meta property="og:description" content="فاکتور سفارش - فروشگاه اینترنتی بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع.">
+    <meta property="og:url" content="https://shop.behtatahvie.com/order-invoice">
+    <meta property="og:site_name" content="فروشگاه اینترنتی بهتاتهویه">
+    <meta property="og:image" content="https://shop.behtatahvie.com/assets/media/logos/logo-1.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="فاکتور سفارش - فروشگاه اینترنتی بهتاتهویه">
+    <meta name="twitter:description" content="فاکتور سفارش - فروشگاه اینترنتی بهتاتهویه - تامین کننده انواع چیلرهای صنعتی و تجاری، کولر گازی، تجهیزات تهویه مطبوع.">
+    <meta name="twitter:image" content="https://shop.behtatahvie.com/assets/media/logos/logo-1.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="32x32">
+    <link rel="icon" href="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://shop.behtatahvie.com/assets/media/logos/logo-1.png">
+    <meta name="msapplication-TileImage" content="https://shop.behtatahvie.com/assets/behta_logo/BehtaTahvie.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://shop.behtatahvie.com/order-invoice">
+
+    <!-- Title -->
+    <title>فاکتور سفارش - فروشگاه اینترنتی بهتاتهویه</title>
+
+    <!-- Stylesheets -->
+    <link type="text/css" rel="stylesheet" th:href="@{/assets/css/othersPage.css}">
+    <style>
+        #header, #footer {
+            display: none;
+        }
+
+        @media print {
+            @page {
+                size: landscape;
+            }
+
+            #save-to-pdf {
+                display: none;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+                color-adjust: exact !important; /*Firefox*/
+            }
+        }
+    </style>
+</div>
+
+
+<body>
+
+<div th:remove="tag" th:fragment="content">
+    <h1 class="d-bugingg d-none">فاکتـــور فروش کالا/خدمات</h1>
+
+    <section id="order-factor" th:object="${detail}">
+        <table id="order-factor-table1">
+            <thead>
+            <tr>
+                <th rowspan="2">
+                    <figure>
+                        <img th:src="@{/assets/behta_logo/BehtaTahvie.png}" alt=" بهتاتهویه">
+                    </figure>
+                </th>
+                <th colspan="3" rowspan="2">
+                    <h2> فاکتـــور فروش کالا/خدمات</h2>
+                </th>
+                <th>
+                    <span>شماره فاکتور (سفارش):</span>
+                    <br>
+                    <span>[[*{trackingCode}]]</span>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <span>تاریخ:</span>
+                    <span dir="ltr">[[*{insertDate}]]</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="factor-title">
+                <td colspan="6"><h3>مشخصات فروشنده</h3></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>نام شخص حقیقی/حقوقی:</span>
+                    <h6>فروشگاه اینترنتی بهتاتهویه</h6>
+                </td>
+                <td>
+                    <span>شهر:</span>
+                    <h6>مشهد</h6>
+                </td>
+                <td>
+                    <span>شماره تلفن:</span>
+                    <h6>09105501184</h6>
+                </td>
+                <td>
+                    <span>نشانی اینترنتی:</span>
+                    <h6><a href="/" target="_parent" style="font-family: sans-serif;">shop.behtatahvie.com</a></h6>
+                </td>
+                <td>
+                    <span>کد شامد:</span>
+                    <h6>1-1-743216-65-0-6</h6>
+                </td>
+            </tr>
+            <tr class="factor-title">
+                <td colspan="6"><h3>مشخصات خریدار</h3></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>نام شخص حقیقی/حقوقی:</span>
+                    <h6 th:text="*{customerName}"></h6>
+                </td>
+                <td>
+                    <span>شهر:</span>
+                    <h6>مشهد</h6>
+                </td>
+                <td>
+                    <span>شماره تلفن:</span>
+                    <h6 th:text="*{customerNumber}"></h6>
+                </td>
+                <td colspan="5">
+                    <span>نشانی:</span>
+                    <h6>[[*{address}]]</h6>
+                </td>
+            </tr>
+            <tr class="factor-title">
+                <td colspan="6"><h3>مشخصات کالا یا خدمات مورد معامله</h3></td>
+            </tr>
+            </tbody>
+        </table>
+        <table id="order-factor-table2">
+            <thead>
+            <tr style="background-color: #EBF7FF;">
+                <th style="transform: rotate(270deg)"><span>ردیف</span></th>
+                <th colspan="2"><span>شرح کالا/خدمت</span></th>
+                <th><span>تعداد</span></th>
+                <th><span>واحد</span></th>
+                <th><span>مبلغ واحد (تومان)</span></th>
+                <th><span>مبلغ کل (تومان)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pro, iter : *{products}">
+                <td>
+                    <span>[[${iter.index} + 1]]</span>
+                </td>
+                <td colspan="2" class="product-name"><span>[[${pro.productName}]]</span></td>
+                <td class="product-count"><span>[[${pro.count}]]</span></td>
+                <td class="product-count"><span>[[${pro.unit}]]</span></td>
+                <td class="product-cost">
+                    <span>[[${#numbers.formatDecimal(pro.price/pro.count, 0, 'COMMA', 0, 'POINT')}]]</span>
+                </td>
+                <td class="product-total-price">
+                    <span>[[${#numbers.formatDecimal(pro.price, 0, 'COMMA', 0, 'POINT')}]]</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right;"><span></span></td>
+                <td><span th:text="${#aggregates.sum(detail.products.![count])}"></span></td>
+                <td><span></span></td>
+                <td style="text-align: left"><span>جمع (تومان):</span></td>
+                <td><span>[[*{#numbers.formatDecimal(realAmount, 0, 'COMMA', 0, 'POINT')}]]</span></td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: right;"><span></span></td>
+                <td style="text-align: left"><span>تخفیف (تومان):</span></td>
+                <td><span>[[*{#numbers.formatDecimal(discountAmount + offCodeAmount, 0, 'COMMA', 0, 'POINT')}]]</span></td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: right;"><span></span></td>
+                <td style="text-align: left"><span>جمع کل (تومان):</span></td>
+                <td><span>[[*{#numbers.formatDecimal(payableAmount, 0, 'COMMA', 0, 'POINT')}]]</span></td>
+            </tr>
+            <tr>
+                <td colspan="11" style="text-align: right; padding: 15px 5px;"><span>توضیحات: [[*{description}]]</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right; padding: 15px 5px;">
+                    <span>خرید اینترنتی:</span> [[*{paymentMethod.id} == 1 ? '&#x2705;' : '&#x25a2;']]
+                    <span>خرید غیر‌نقدی:</span> [[*{paymentMethod.id} == 2 ? '&#x2705;' : '&#x25a2;']]
+                </td>
+                <td colspan="3" style="text-align: right; padding: 15px 5px;"><span>مهر و امضای فروشنده:</span></td>
+                <td colspan="5" style="text-align: right; padding: 15px 5px;"><span>مهر و امضای خریدار:</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section style="text-align-last:center">
+        <span>(توجه)</span>
+        <br>
+        <div th:replace="fragment/factorTips::tips"></div>
+    </section>
+    <button id="save-to-pdf" class="btn btn-info" onclick="window.print()"> چاپ فاکتور <i class="icon icon-printer"></i></button>
+</div>
+
+<div th:remove="tag" th:fragment="script">
+    <script th:src="@{/assets/oldJs/pages/header.js}"></script>
+</div>
+
+
+</body>
+</html>
